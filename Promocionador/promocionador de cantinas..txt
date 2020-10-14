@@ -1,0 +1,149 @@
+
+Promocionador de bares, clubs nocturnos, antros.
+* Dos apps una para usuarios y otra para los lugares.
+* Una app para usurios y una web site para los lugales
+
+Tecnologias: 
+    React Native    (APP para los usuarios, APP para los negocios).
+    React           (Pagina web).
+    Golang          (Backend) Arquitectura Hexagonal.
+
+
+Pagina oficial
+    • Home.
+    • Contact us.
+        ♥ Envio de email a soporte.
+    • About us.
+    • Register Negocio.
+    • Dashboard.
+        ♥ Logeo.
+        ♥ Registro de empleados.
+        ♥ Ver email de soporte con redireccion a gmail, hotmail o servidor propio.
+        ♥ Recuperacion de contraseñas.
+        ♥ Visualizacion de estadisticas. por ( 
+            Cantidad de usuarios,
+            numero de usuarios nuevos,
+            {
+                (por pais)
+                Negocios mas populares,
+                Negocios menos populares,
+            }).
+        ♥ Catalogos ( Agregar, eliminar, modificar, buscar, ordenar ).
+        ♥ Listas de visualizacion (
+            Negocios,
+            Empleados,
+            Usuarios,
+        ) Filtrado ( Pais, ciudad, popularidad ) Ordenadas ( alfabeticamente ) Busquedas por nombre.
+        ♥ Aprovar Registro o denegar solicitudes de negocios.
+        ♥ Aprovar o denegar solicitudes de negocio.
+        ♥ Modificar comentario por peticion de Negocio (presentando evidencia).
+
+
+App users.
+    • Login with google, facebook, email y password.
+    • Change password.
+    • notificaciones te envian a la ruta de procedencia.
+    • Profile Data (Datos de perfil del usuario) Tambien sirve para cambiar datos personales.
+    • Home (Contendra el seccionamiento por categorias, por ensima una lista de los ultimos eventos y busqueda por nombre).
+    • Lista en menu de los negocios marcados como favoritos (Sirve para facil navegación.)
+    • Listado de negocios ( de acuerdo a la categoria seleccionada).
+    • View More (Detalles del negocio seleccionado).
+    • Comentar negocio y calificar.
+    • Terminos y condiciones del uso de la app Por pais.
+    • Mapa de ubicacion con ruta de cada negocio (al darle click nos redirigira al gps predeterminado por el usuario para seguir la ruta).
+    • Marcar negocio como favorito o desmarcar negocio (al desmarcar desaparece de la lista de favoritos).
+    • Soporte (Contiene preguntas frecuentes, y envio de email a soporte desde app.)
+    • Cerrar sesión.
+    
+    Version 2.0
+    • Apartado de mesas o lugares. con fecha y hora
+    • Cancelación de cita. con cobro por cancelar.
+
+App Negocio.
+    • Login with email y password
+    • Change password
+    • Home()
+    • Profile (Visualización de datos y modificacion de los mismos).
+    • Add event. (Agrega un evento y notifica a los usuarios que lo tengan marcado como favoritos).
+    • Delete event (El evento se puede eliminar manualmente y con la fecha de Expiracion).
+    • Add Promocion (La promocion añadida notificara a los usuarios que tengan marcado como favorito el negocio)
+    • Delete Promocion (La promoxion se puede eliminar manualmente o por la fecha de expiracion.) *Eliminacion Logica
+    • Reactivacion de Promocion con modificacion de fechas de inicio y expiracion.
+    • Solicitud de retiro de comentario (a soporte enviando evidencia y razon de la eliminacion).
+    • Terminos y condiciones del uso de la app.
+    • Soporte (Contiene preguntas frecuentes, y envio de email a soporte desde la app).
+    • Cerrar sesión.
+
+    Implementacion de cobro mensual (en proceso).
+
+    Version 2.0
+    • Recepcion de apartados de mesa.
+    • Cerrar local temporarl (se aplicara para que el duelño o manejador de la app pueda cerrar el local y cancelar citas 
+        si tiene algun impedimento o lo clausuraron).
+Base de datos NoSql
+Collecciones
+• users. []users : {
+    UserName: "",
+    Email:"",
+    Password:"",
+    Favoritos:"",
+    uidCountry: "",
+    uidState: "",
+}
+• Negocio. []Negocios : {
+    Name: "",
+    Ubicacion: "",
+    Events: [
+        {
+            Image: "",
+            Name: "",
+            Date: "",
+            Time: "",
+        },
+    ],
+    promociones: [
+        {
+            Imagen: "",
+            Name:"",
+            Inicio Fecha: "",
+            Expiracion: "",
+        },
+    ],
+    History pays: [
+        {
+
+        }
+    ]
+}
+• Administradores. []Administradores : {
+    user: "",
+    Password: "",
+}
+• Countrys. []Countrys : {
+    CountryName: "",
+    State: [
+        {
+            Statename: ""
+        },
+    ]
+}
+• categorias. []Categorias : {
+    CategoriaName: "",
+}
+• Type Request. []TypeRequest : {
+    Name: "",
+}
+• Request.      []Resquest : {
+    uidNegocio: "",
+    uidtypeRequest: "",
+    Description:"",
+    Status: false,
+}
+• Calificacion. []Calificaciones : {
+    uidUser: "",
+    uidNegocio: "",
+    Comentario: "el mejor putero en la que he visitado... TnT",
+    Calidad: 5,
+}
+
+
