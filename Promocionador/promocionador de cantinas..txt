@@ -45,8 +45,8 @@ App users.
     • notificaciones te envian a la ruta de procedencia.
     • Profile Data (Datos de perfil del usuario) Tambien sirve para cambiar datos personales.
     • Home (Contendra el seccionamiento por categorias, por ensima una lista de los ultimos eventos y busqueda por nombre).
-    • Lista en menu de los negocios marcados como favoritos (Sirve para facil navegación.)
     • Listado de negocios ( de acuerdo a la categoria seleccionada).
+    • Lista en menu de los negocios marcados como favoritos (Sirve para facil navegación.)
     • View More (Detalles del negocio seleccionado).
     • Comentar negocio y calificar.
     • Terminos y condiciones del uso de la app Por pais.
