@@ -22,10 +22,14 @@ func NewInteractor(db *mongo.Database) Interactor {
 
 func (i *interactor) NewAppController() controller.AppController {
 	appController := &appController{}
+	appController.AuthController = i.NewAuthController()
+	appController.CategoryController = i.NewCategoryController()
 	appController.UserController = i.NewUserController()
 	return appController
 }
 
 func (i *interactor) NewMakeRoutes(r *echo.Echo, c controller.AppController) {
+	i.NewMakeAuthRoutes(r, c)
+	i.NewMakeCategoryRoutes(r, c)
 	i.NewMakeUserRoutes(r, c)
 }

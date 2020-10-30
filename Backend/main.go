@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	db, _ := database.InitData()
+	db := database.InitData()
 
 	r := echo.New()
 

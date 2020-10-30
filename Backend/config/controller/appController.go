@@ -1,7 +1,13 @@
 package controller
 
-import i "promocionadorApi/users/infrastructure"
+import (
+	ai "promocionadorApi/auth/infrastructure"
+	ci "promocionadorApi/categorys/infrastructure"
+	ui "promocionadorApi/users/infrastructure"
+)
 
 type AppController interface {
-	i.UserController
+	ai.AuthController
+	ci.CategoryController
+	ui.UserController
 }
