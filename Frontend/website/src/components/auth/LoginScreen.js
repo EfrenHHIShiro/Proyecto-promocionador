@@ -1,145 +1,164 @@
 
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
+import {
+  TextField,
+  Button,
+  Link,
+} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import logo from '../../assets/images/ic_git_logo_icon.svg';
-import logo2 from '../../assets/images/ic_git_logo_text.svg';
+import FacebookIcon from '../../assets/icons/facebook.svg';
+import GoogleIcon from '../../assets/icons/google.svg';
+
 
 const CssTextField = withStyles(theme => ({
   root: {
     '& label.Mui-focused': {
       color: 'white',
-     },
-     '& .MuiInput-underline:after': {
+    },
+    '& .MuiInput-underline:after': {
       borderBottomColor: '#0597F2',
-     },
-     '& .MuiOutlinedInput-root': {
+    },
+    '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: '#0367A6',
       },
       '&:hover fieldset': {
         borderColor: '#0367A6',
       },
-     '&.Mui-focused fieldset': {
-      borderColor: '#0597F2',
+      '&.Mui-focused fieldset': {
+        borderColor: '#0597F2',
+      }
     }
   }
-}
 }))(TextField);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '69.9vh',
+    height: '70vh',
+    width: '70vh',
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
+    borderRadius: 10,
     backgroundColor: '#858585',
     color: '#ffffff',
   },
   paper: {
-    
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(1, 6),
     display: 'flex',
     flexDirection: 'column',
   },
   logo: {
-    
-    width:62,
-   marginLeft:50,
+    width: 35,
   },
-  logos: {
-    
-    width:106,
-   },
-   lg: {
-    marginTop:20,
-    marginLeft:100,
-   },
+  lg: {
+    marginLeft: 35,
+  },
+  buttonlogoGoogle: {
+    backgroundColor: '#EEEEEE',
+    color: 'black',
+    height: 50,
+    width: 200,
+  },
+  buttonlogoFacebook: {
+    backgroundColor: '#1977F3',
+    color: 'white',
+    height: 50,
+    width: 200,
+  },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: '#0367A6',
   },
-  links:{
+  links: {
     color: '#ffffff',
-    marginLeft:'28%',
-  }
+    marginLeft: '28%',
+  },
+  text:
+  {
+    color: '#586A98',
+  },
 }));
 
 export default function SignInSide() {
   const classes = useStyles();
 
   return (
-
-    <Grid container component="main" className={classes.root}>
-      <Grid container spacing={3}>
-      <Grid  item xs={12} sm={6} className={classes.lg}>
-        {/* <img className={classes.logo}  alt="Portal Logo" src={logo} align="center" />
-        <img className={classes.logos}  alt="log" src={logo2} align="center" /> */}
+    <Grid container className={classes.root}>
+        <Grid container  xs={12} sm={12} >
+          <h1 className={classes.lg}>Inicio de sesión</h1>
+          <Grid container justify="space-around" direction="row">
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<img className={classes.logo} alt="Portal Logo" src={FacebookIcon} align="center" />}
+            className={classes.buttonlogoFacebook}
+          >
+            Continuar con Facebook
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<img className={classes.logo} alt="log" src={GoogleIcon} align="center" />}
+            className={classes.buttonlogoGoogle}
+          >
+            Continuar con Google
+          </Button>
+         </Grid>
       </Grid>
+      <div className={classes.paper}>
+      <Grid container justify="center">
+        <h2>O</h2>
       </Grid>
-        <div  className={classes.paper}>
-      
-          <form className={classes.form} noValidate>
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              color="#ffffff"
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              inputProps={{ style: { color: 'white'}}}
-            />
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              inputProps={{ style: { color: 'white'}}}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Iniciar sesion
+        <form className={classes.form} noValidate>
+          <CssTextField
+            variant="outlined"
+            margin="normal"
+            color="#ffffff"
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            inputProps={{ style: { color: 'white' } }}
+          />
+          <CssTextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            inputProps={{ style: { color: 'white' } }}
+          />
+          <Grid container justify="flex-end">
+            <Link href="/auth/recovery+password" className={classes.text&classes.links}>
+              ¿Se te olvidó tu contraseña?
+            </Link>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Iniciar sesion
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="/auth/recovery+password" className={classes.links}>
-                ¿Se te olvidó tu contraseña?
-                </Link>
-              </Grid>
-            </Grid>
-            
-          </form>
-        </div>
-      
+            <Grid container justify="center" className={classes.text}>
+            Sí eres nuevo usuario.
+            <Link href="/auth/recovery+password">
+              Registrarse aquí
+            </Link>
+          </Grid>
+        </form>
+      </div>
     </Grid>
   );
 }
