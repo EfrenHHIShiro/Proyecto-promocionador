@@ -1,13 +1,13 @@
 import React from 'react'
 
-import CardRegister from './helpers/CardRegister'
+import CardRegisterUser from './helpers/CardRegisterUser'
 
 
 
 const RegisterScreen = () => {
     return (
         <>
-            <CardRegister />
+            <CardRegisterUser />
         </>
 
     )

@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import logo from '../assets/images/ic_git_logo_icon.svg';
 import RegisterScreen from '../components/helpers/CardRegister';
 import LoginScreen from '../components/auth/LoginScreen';
+import Rg from '../components/RegisterScreen';
 
 
 const HomeScreen = () => {
@@ -50,7 +51,7 @@ const HomeScreen = () => {
     // }
     return (
         // Para pruebas comentar estas lineas
-        <LoginScreen/>
+        <Rg/>
 
     )
 }
