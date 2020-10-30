@@ -14,9 +14,9 @@ import DataPersonal from './DataPersonal';
 import EducationExperience from './EducationExperience';
 import SkillsLanguages from './SkillsLanguages';
 
-// import { useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers';
-// import * as yup from 'yup';
+ import { useForm } from 'react-hook-form';
+ //import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormChange } from '../../actions/persistenceActions';
 
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Datos', 'Educación & Experiencia', 'Habilidades & Lenguajes'];
+const steps = ['Datos', 'Ubicación', 'Documentos'];
 
 export default function Checkout() {
   const classes = useStyles();
@@ -70,17 +70,17 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const form = useSelector(state => state.persistence.form);
   
-  // const schema = yup.object().shape({
-  //   user: yup.object({
-  //     firstname: yup.string().trim().required(() => <span>First name is required</span>),
-  //     lastname: yup.string().trim().required(() => <span>Last name is required</span>),
-  //   }),
-  // });
+  const schema = yup.object().shape({
+    user: yup.object({
+      firstname: yup.string().trim().required(() => <span>First name is required</span>),
+      lastname: yup.string().trim().required(() => <span>Last name is required</span>),
+    }),
+  });
 
-  // const { register, handleSubmit, errors } = useForm({
-  //   resolver: yupResolver(schema),
-  //   defaultValues: form,
-  // });
+  const { register, handleSubmit, errors } = useForm({
+ //   resolver: yupResolver(schema),
+    defaultValues: form,
+  });
 
   const onSubmit = data => {
     // data.image = data.image[0];
@@ -108,7 +108,7 @@ export default function Checkout() {
         console.log(form)
       }
       <CssBaseline />
-      <form className={classes.layout}>
+      <form className={classes.layout} onSubmit={handleSubmit(onSubmit) } >
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
               Formulario de Registro de datos
