@@ -189,7 +189,7 @@ const HomeRouter = () => {
                         onClick={ handleDrawerOpen }
                         className={ clsx(classes.menuButton, open && classes.menuButtonHidden) }
                     >
-                        <img className={classes.logo} alt="Portal Logo" src={logo} align="center" />
+                        {/* <img className={classes.logo} alt="Portal Logo" src={logo} align="center" /> */}
                         {/* <MenuIcon /> */}
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={ classes.title }>

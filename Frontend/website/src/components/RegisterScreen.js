@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CardRegisterUser from './helpers/CardRegisterUser'
+import CardRegisterUser from './helpers/CardRegister'
 
 
 
