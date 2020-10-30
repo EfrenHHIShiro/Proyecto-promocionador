@@ -12,7 +12,7 @@ import {
 
 import DataPersonal from './DataPersonal';
 import EducationExperience from './EducationExperience';
-import SkillsLanguages from './SkillsLanguages';
+import SkillsLanguages from './Documents';
 
  import { useForm } from 'react-hook-form';
  //import { yupResolver } from '@hookform/resolvers';
@@ -78,7 +78,7 @@ export default function Checkout() {
   });
 
   const { register, handleSubmit, errors } = useForm({
- //   resolver: yupResolver(schema),
+   // resolver: yupResolver(schema),
     defaultValues: form,
   });
 
@@ -124,7 +124,7 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Registro completo.
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order confirmation, and will
@@ -138,7 +138,7 @@ export default function Checkout() {
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
-                      Back
+                      Volver
                     </Button>
                   )}
                   <Button

@@ -125,7 +125,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             inputRef={ register }
                             name="resourcedatas.lastname"
-                            label="Razon social"
+                            label="RFC"
                             // helperText={ <ErrorMessage errors={ errors } name="resourcedatas.lastname" /> }
                             fullWidth
                             autoComplete="family-name"
@@ -134,7 +134,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                     <Grid item xs={12}>
                         <TextField
                             name="resourcedatas.address"
-                            label="RFC"
+                            label="Razon social"
                             fullWidth
                             autoComplete="shipping address-line1"
                         />
