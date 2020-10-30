@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
-import { ErrorMessage } from '@hookform/error-message';
+//import { ErrorMessage } from '@hookform/error-message';
 
 const DataPersonal = ({ register, errors, datas}) => {
 
@@ -115,7 +115,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             inputRef={ register } 
                             name="resourcedatas.firstname"
-                            label="First name"
+                            label="Nombre del negocio"
                             // helperText={<ErrorMessage errors={ errors } name="resourcedatas.firstname" /> }
                             fullWidth
                             autoComplete="given-name"
@@ -125,7 +125,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             inputRef={ register }
                             name="resourcedatas.lastname"
-                            label="Last name"
+                            label="Razon social"
                             // helperText={ <ErrorMessage errors={ errors } name="resourcedatas.lastname" /> }
                             fullWidth
                             autoComplete="family-name"
@@ -134,7 +134,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                     <Grid item xs={12}>
                         <TextField
                             name="resourcedatas.address"
-                            label="Address"
+                            label="RFC"
                             fullWidth
                             autoComplete="shipping address-line1"
                         />
@@ -142,7 +142,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             name="resourcedatas.personalemail"
-                            label="Personal Email"
+                            label="Email"
                             fullWidth
                             autoComplete="given-name"
                         />
@@ -151,7 +151,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             id="Businessmail"
                             name="email"
-                            label="Business Email"
+                            label="Celular"
                             fullWidth
                             autoComplete="family-name"
                         />
@@ -160,28 +160,16 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             id="Cellphone"
                             name="Cellphone"
-                            label="Cellphone"
+                            label="Direccion"
                             fullWidth
                             autoComplete="family-name"
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            id="date"
-                            label="Date Birth"
-                            type="date"
-                            defaultValue="2017-05-24"
-                            fullWidth
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
                             id="city"
                             name="city"
-                            label="City"
+                            label="Ciudad"
                             fullWidth
                             autoComplete="shipping address-level2"
                         />
@@ -202,7 +190,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                         <TextField
                             id="country"
                             name="country"
-                            label="Country"
+                            label="Pais"
                             fullWidth
                             autoComplete="shipping country"
                         />

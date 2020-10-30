@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
   },
   logo: {
     
@@ -83,14 +82,15 @@ export default function SignInSide() {
   const classes = useStyles();
 
   return (
+
     <Grid container component="main" className={classes.root}>
       <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} className={classes.lg}>
-        <img className={classes.logo}  alt="Portal Logo" src={logo} align="center" />
-        <img className={classes.logos}  alt="log" src={logo2} align="center" />
+      <Grid  item xs={12} sm={6} className={classes.lg}>
+        {/* <img className={classes.logo}  alt="Portal Logo" src={logo} align="center" />
+        <img className={classes.logos}  alt="log" src={logo2} align="center" /> */}
       </Grid>
       </Grid>
-        <div className={classes.paper}>
+        <div  className={classes.paper}>
       
           <form className={classes.form} noValidate>
             <CssTextField
@@ -127,7 +127,7 @@ export default function SignInSide() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Iniciar sesion
             </Button>
             <Grid container>
               <Grid item xs>

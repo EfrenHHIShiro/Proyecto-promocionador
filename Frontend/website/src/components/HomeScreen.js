@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core';
 import logo from '../assets/images/ic_git_logo_icon.svg';
+import RegisterScreen from '../components/helpers/CardRegister'
 
 const HomeScreen = () => {
     const styles = makeStyles((theme) => ({
@@ -47,10 +48,7 @@ const HomeScreen = () => {
     // }
     return (
         // Para pruebas comentar estas lineas
-
-        <div className={classes.divContent}>
-            <img className={classes.logo} alt="Portal Logo" src={logo} align="center" />
-        </div>
+        <RegisterScreen/>
 
     )
 }

@@ -14,9 +14,9 @@ import DataPersonal from './DataPersonal';
 import EducationExperience from './EducationExperience';
 import SkillsLanguages from './SkillsLanguages';
 
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
+// import { useForm } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers';
+// import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormChange } from '../../actions/persistenceActions';
 
@@ -70,17 +70,17 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const form = useSelector(state => state.persistence.form);
   
-  const schema = yup.object().shape({
-    user: yup.object({
-      firstname: yup.string().trim().required(() => <span>First name is required</span>),
-      lastname: yup.string().trim().required(() => <span>Last name is required</span>),
-    }),
-  });
+  // const schema = yup.object().shape({
+  //   user: yup.object({
+  //     firstname: yup.string().trim().required(() => <span>First name is required</span>),
+  //     lastname: yup.string().trim().required(() => <span>Last name is required</span>),
+  //   }),
+  // });
 
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-    defaultValues: form,
-  });
+  // const { register, handleSubmit, errors } = useForm({
+  //   resolver: yupResolver(schema),
+  //   defaultValues: form,
+  // });
 
   const onSubmit = data => {
     // data.image = data.image[0];
@@ -92,7 +92,7 @@ export default function Checkout() {
   const getStepContent = (step) => {
     switch (step) {
       case 0:
-        return <DataPersonal register={ register } errors={ errors } />;
+        return <DataPersonal />;
       case 1:
         return <EducationExperience />;
       case 2:
@@ -108,7 +108,7 @@ export default function Checkout() {
         console.log(form)
       }
       <CssBaseline />
-      <form onSubmit={ handleSubmit(onSubmit) } className={classes.layout}>
+      <form className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
               Formulario de Registro de datos
