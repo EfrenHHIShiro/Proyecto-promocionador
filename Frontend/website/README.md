@@ -10,7 +10,6 @@ In the project directory, you can run:
 ### `npm install react-router-dom`
 ### `npm install react-redux`
 ### `npm install --save redux-thunk`
-
 ### `npm install axios`
 ### `npm install @material-ui/core`
 ### `npm install @material-ui/icons`

@@ -82,13 +82,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+const CardRegisterUser = () => {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.root}>
         <Grid container  xs={12} sm={12} >
-          <h1 className={classes.lg}>Inicio de sesión</h1>
+          <h1 className={classes.lg}>Registrarse</h1>
           <Grid container justify="space-around" direction="row">
           <Button
             variant="contained"
@@ -136,11 +136,17 @@ export default function SignInSide() {
             autoComplete="current-password"
             inputProps={{ style: { color: 'white' } }}
           />
-          <Grid container justify="flex-end">
-            <Link href="/auth/recovery+password" className={classes.text&classes.links}>
-              ¿Se te olvidó tu contraseña?
-            </Link>
-          </Grid>
+          <CssTextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="Confirm password"
+            label="Confirm Password"
+            type="password"
+            id="Confirm password"
+            autoComplete="current-password"
+            inputProps={{ style: { color: 'white' } }}
+          />
           <Button
             type="submit"
             fullWidth
@@ -150,14 +156,9 @@ export default function SignInSide() {
           >
             Iniciar sesion
             </Button>
-            <Grid container justify="center" className={classes.text}>
-            Sí eres nuevo usuario.
-            <Link href="/auth/recovery+password">
-              Registrarse aquí
-            </Link>
-          </Grid>
         </form>
       </div>
     </Grid>
   );
 }
+export default CardRegisterUser
