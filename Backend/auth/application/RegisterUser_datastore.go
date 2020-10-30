@@ -4,15 +4,18 @@ import (
 	"context"
 	"promocionadorApi/auth/domain"
 	"promocionadorApi/config/database"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func (r *authRepository) RegisterUser(ctx context.Context, objeto *domain.RegisterUser) error {
+func (r *authRepository) RegisterUser(ctx context.Context, object *domain.RegisterUser) error {
 
-	objeto.HashPassword()
-	_, err := r.db.Collection(database.CUser).InsertOne(ctx, objeto)
+	object.HashPassword()
+	result, err := r.db.Collection(database.CUser).InsertOne(ctx, object)
 	if err != nil {
 		return err
 	}
+	object.ID = result.InsertedID.(primitive.ObjectID)
 
 	// send email to create password personal.
 	// useridencript := helpers.Encrypt(strconv.Itoa())

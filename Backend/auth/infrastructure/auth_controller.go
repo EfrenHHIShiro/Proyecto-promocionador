@@ -14,6 +14,8 @@ type AuthController interface {
 	RegisterBusiness(c echo.Context) error
 	RegisterUser(c echo.Context) error
 	ActiveUserAccount(c echo.Context) error
+	PetitionChangePasswordUser(c echo.Context) error
+	ChangePasswordUser(c echo.Context) error
 }
 
 type authController struct {

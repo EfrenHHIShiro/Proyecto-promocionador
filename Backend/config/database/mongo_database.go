@@ -12,9 +12,10 @@ var db *mongo.Database
 var session mongo.Session
 
 const (
-	uri    = "mongodb+srv://Shiro:sh1r0@promocionador.o5oo8.mongodb.net/Promocionador?retryWrites=true&w=majority"
-	dbName = "Promocionador"
-	CUser  = "users"
+	uri       = "mongodb+srv://Shiro:sh1r0@promocionador.o5oo8.mongodb.net/Promocionador?retryWrites=true&w=majority"
+	dbName    = "Promocionador"
+	CUser     = "users"
+	CCategory = "categories"
 )
 
 func InitData() *mongo.Database {

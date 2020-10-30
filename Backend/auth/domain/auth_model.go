@@ -51,3 +51,20 @@ func (ru *RegisterUser) HashPassword() {
 type ActiveUserAccount struct {
 	Status bool `bson:"status"`
 }
+
+type PetitionChangePasswordUser struct {
+	ID        primitive.ObjectID `bosn:"_id"`
+	IdEncrypt string             `bosn:"-"`
+	Email     string             `bson:"email"`
+}
+
+type ChangePasswordUser struct {
+	ID        primitive.ObjectID `bosn:"_id,omitempty"`
+	IdEncrypt string             `bson:"-"`
+	Password  string             `bson:"Password"`
+}
+
+func (cu *ChangePasswordUser) HashPassword() {
+	bytes, _ := bcrypt.GenerateFromPassword([]byte(cu.Password), 14)
+	cu.Password = string(bytes)
+}
