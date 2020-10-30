@@ -147,7 +147,7 @@ export default function Checkout() {
                     type="submit"
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
                   </Button>
                 </div>
               </React.Fragment>

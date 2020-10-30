@@ -41,7 +41,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
 }))(LinearProgress);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: 350,
     height: 200,
@@ -65,6 +65,15 @@ const useStyles = makeStyles({
     marginTop:10,
     paddingBottom:-100,
   },
+  error: {
+    '& span':{
+        color: '#bf1650',
+        '&::before':{
+            display: 'inline',
+            content: '"⚠ "',
+        },
+    },
+},
   cardsoft:{
     width: 310,
     height:40,
@@ -81,22 +90,25 @@ const useStyles = makeStyles({
     '& #buttonPhoto': {
         color: '#000000',
     },
-},
-paper: {
+    },
+    input: {
+      display: 'none',
+    },
+    paper: {
     width: 120, 
     height:120,
     borderRadius: '100%',
     position: 'relative', 
-    marginLeft: '42%',
+    marginLeft: '30%',
     marginBottom: theme.spacing(3),
     '& img':{ 
         width: '100%',
         height: '100%',
         margin: 'auto',
-        borderRadius: '100%',
+        borderRadius: '90%',
     },
 },
-});
+}));
 
 const useStyless = makeStyles((theme) => ({
   root: {
@@ -115,11 +127,16 @@ const SkillsLanguages= ({hard,lang,sof}) => {
   const classe = useStyless();
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Proporcione los documentos solicitados
-      </Typography>
-      <Grid container spacing={3}>
-      <Paper className={classes.paper} >
+           <Typography variant="h6" gutterBottom>
+                Proporcione los documentos correspondientes
+            </Typography>
+            <Grid container>
+                <Grid item xs={12}>
+ 
+                </Grid>
+                <Grid container spacing={4} className={ classes.error }>
+                    <Grid item xs={12} sm={6} >
+                    <Paper className={classes.paper} >
                         {/* <img src={file.file} alt="Hardskill" /> */}
                         <input
                             // name="image"
@@ -134,7 +151,52 @@ const SkillsLanguages= ({hard,lang,sof}) => {
                             </IconButton>
                         </label>
                     </Paper>
-       </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                    <h1>FOTO RFC</h1>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper} >
+                        {/* <img src={file.file} alt="Hardskill" /> */}
+                        <input
+                            // name="image"
+                            // ref={ register }
+                            accept="image/*"
+                            className={classes.input}
+                            id="image-input"
+                            type="file" />
+                        <label htmlFor="image-input" className={classes.superposition}>
+                            <IconButton id="buttonPhoto" size="small" aria-label="upload picture" component="span">
+                                <PhotoCamera fontSize="small" />
+                            </IconButton>
+                        </label>
+                    </Paper>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <h1>FOTO IDENTIFICACIÓN</h1>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper} >
+                        {/* <img src={file.file} alt="Hardskill" /> */}
+                        <input
+                            // name="image"
+                            // ref={ register }
+                            accept="image/*"
+                            className={classes.input}
+                            id="image-input"
+                            type="file" />
+                        <label htmlFor="image-input" className={classes.superposition}>
+                            <IconButton id="buttonPhoto" size="small" aria-label="upload picture" component="span">
+                                <PhotoCamera fontSize="small" />
+                            </IconButton>
+                        </label>
+                    </Paper>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <h1>FOTO COMPROBANTE SAT</h1>
+                    </Grid>
+                    </Grid>
+            </Grid>
     </React.Fragment>
     
   );
