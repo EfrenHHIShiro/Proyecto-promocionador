@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
     borderRadius: 10,
-    backgroundColor: '#858585',
+    backgroundColor: '#FFFFFE',
     color: '#ffffff',
   },
   paper: {

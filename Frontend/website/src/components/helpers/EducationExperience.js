@@ -10,6 +10,8 @@ import { red, pink } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import Add from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
+import {withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
+// import credentials from '../components/helpers/credentials'
 
 
 // npm add react-native-web
@@ -45,112 +47,40 @@ const useStyles = makeStyles({
   },
 });
 
-const EducationExperience = ({cert,educ,expe}) => {
+const mapURL=`https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQdWZWsNyakl30EbvVherj04c9hcqFc8&callback=initMap`;
+const Map = (props)=>{
+return (
+  <GoogleMap
+  defaultZoom={10}
+  defaultCenter={{lat: -34.397, lng: 150.644}}
+  />
+)
+}
+const EducationExperience = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Educación & Experiencia
+        Selecciona la ubicación
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Card className={classes.root}>
-            <Typography className={classes.titlecard}>
-              Educación
-            </Typography>
-            <IconButton className={classes.icon} color="primary" aria-label="add to Experience" size="small">
-              <Add/>
-            </IconButton>
-              <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card>
-              <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card> <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card> 
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card className={classes.root}>
-            <Typography className={classes.titlecard}>
-              Experience
-            </Typography>
-            <IconButton className={classes.icon} color="primary" aria-label="add to Experience" size="small">
-              <Add/>
-            </IconButton>
-              <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card>
-              <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card> <Card className={classes.cardp}>
-                <CardContent>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Universidad UTM
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" >
-                    2022
-                  </Typography>
-                  <Typography className={classes.school} color="textSecondary" >
-                  Ingenieria en tecnologías de la informacion
-                  </Typography>
-                </CardContent>
-              </Card> 
-          </Card>
+          <div>
+           <Map
+         // googleMapURL={mapURL}
+          containerElement={ <div style={{height:'200px'}}/>}
+          mapElement= {<div style={{height:'100%'}}/>}
+          loadingElement= {<p>Cargando</p>}
+          />
+          </div>
         </Grid>
       </Grid>
     </React.Fragment>
   );
 }
-export default EducationExperience;
+
+export default withScriptjs(
+  withGoogleMap(
+    Map
+  )
+)

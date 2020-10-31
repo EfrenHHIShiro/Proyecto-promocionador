@@ -10,6 +10,7 @@ import {
   makeStyles 
 } from '@material-ui/core/';
 
+
 import DataPersonal from './DataPersonal';
 import EducationExperience from './EducationExperience';
 import SkillsLanguages from './Documents';
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Datos', 'Ubicación', 'Documentos'];
+const steps = ['Datos', 'Documentos'];
 
 export default function Checkout() {
   const classes = useStyles();
@@ -94,9 +95,9 @@ export default function Checkout() {
       case 0:
         return <DataPersonal />;
       case 1:
-        return <EducationExperience />;
-      case 2:
         return <SkillsLanguages />;
+      // case 2:
+      //   return <SkillsLanguages />;
       default:
         throw new Error('Unknown step');
     }
@@ -111,7 +112,7 @@ export default function Checkout() {
       <form className={classes.layout} onSubmit={handleSubmit(onSubmit) } >
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-              Formulario de Registro de datos
+              NUEVO REGISTRO
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
@@ -120,15 +121,14 @@ export default function Checkout() {
               </Step>
             ))}
           </Stepper>
-          <React.Fragment>
+          <React.Fragment >
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
                   Registro completo.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  Se ha enviado un correo a la direccion proporcionada, porfavor revisalo y continua.
                 </Typography>
               </React.Fragment>
             ) : (
