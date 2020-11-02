@@ -15,9 +15,9 @@ func (h *authController) LoginUser(c echo.Context) error {
 		return err
 	}
 
-	// if login.Email == "" || login.Password == "" {
-	// 	return echo.NewHTTPError(http.StatusBadRequest, "Syntax error of sent json")
-	// }
+	if object.Email == "" || object.Password == "" {
+		return echo.NewHTTPError(http.StatusBadRequest, "Syntax error of sent json")
+	}
 
 	ctx := c.Request().Context()
 	if ctx == nil {

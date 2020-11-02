@@ -7,5 +7,4 @@ import (
 )
 
 func MakeUserRoutes(r *echo.Echo, c controller.AppController) {
-	r.GET("user/create", c.UserCreator)
 }

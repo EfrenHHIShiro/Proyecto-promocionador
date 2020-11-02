@@ -6,28 +6,41 @@ import (
 	"fmt"
 	"net/http"
 	"promocionadorApi/auth/domain"
+	"promocionadorApi/helpers"
 
 	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func (h *authController) RegisterBusiness(c echo.Context) error {
-	// image, _ := c.FormFile("file")
-	data := c.FormValue("data")
+	object := &domain.RegisterBusiness{
+		IsFirst: true,
+		Status:  false,
+	}
 
-	object := &domain.RegisterBusiness{}
-	err := json.Unmarshal([]byte(data), object)
-	if err != nil {
+	data := c.FormValue("data")
+	if err := json.Unmarshal([]byte(data), object); err != nil {
 		fmt.Println(err)
 	}
 
-	// var str string
-	// if image != nil {
-	// 	str, err = helper.Upload(image)
-	// 	object.Resourcedata.Photouser = str
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// }
+	form, err := c.MultipartForm()
+	if err != nil {
+		return err
+	}
+
+	files := form.File["files"]
+	for _, file := range files {
+		str, err := helpers.Upload(file)
+		if err != nil {
+			return err
+		}
+		document := &domain.Document{
+			ID:            primitive.NewObjectID(),
+			DocumentImage: str,
+			Status:        false,
+		}
+		object.Documents = append(object.Documents, document)
+	}
 
 	// if object.Email == "" ||
 	// 	object.Roleid == 0 ||
@@ -42,10 +55,9 @@ func (h *authController) RegisterBusiness(c echo.Context) error {
 		ctx = context.Background()
 	}
 
-	err = h.AuthRepository.RegisterBusiness(ctx, object)
-	if err != nil {
+	if err = h.AuthRepository.RegisterBusiness(ctx, object); err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	return c.JSON(http.StatusCreated, object)
+	return c.JSON(http.StatusCreated, true)
 }

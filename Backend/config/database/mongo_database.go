@@ -16,6 +16,8 @@ const (
 	dbName    = "Promocionador"
 	CUser     = "users"
 	CCategory = "categories"
+	CCountry  = "countries"
+	CBusiness = "business"
 )
 
 func InitData() *mongo.Database {
