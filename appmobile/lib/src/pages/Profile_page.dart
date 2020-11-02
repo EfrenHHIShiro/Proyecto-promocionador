@@ -1,5 +1,5 @@
 import 'package:appmobile/src/constants.dart';
-// import 'package:appmobile/src/pages/fragments/DataUser_Fragment.dart';
+import 'package:appmobile/src/pages/fragments/DataUser_Fragment.dart';
 // import 'package:appmobile/src/pages/fragments/SkillsFragment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +49,7 @@ class ProfilePage extends StatelessWidget {
             Container(
               height: size.height - 318,
               child: DefaultTabController(
-                length: 3,
+                length: 2,
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -57,21 +57,22 @@ class ProfilePage extends StatelessWidget {
                           border: Border.all(color: Colors.blueAccent)),
                       child: TabBar(tabs: [
                         Tab(text: "Datos"),
-                        Tab(text: "Reservaciones"),
-                        Tab(text: "x"),
+                        Tab(text: "Favoritos"),
+                        // Tab(text: ""),
                       ]),
                     ),
                     Expanded(
                       child: Container(
                         child: TabBarView(children: [
-                          Icon(Icons.directions_car),
+                          // Icon(Icons.directions_car),
+                          DataUserFragment(),
                           Icon(Icons.directions_transit),
-                          Icon(Icons.directions_bike),
-                          // DataUserFragment(),
+                          // Icon(Icons.directions_bike),
+
                           // SkillsFragment(),
-                          Container(
-                            child: Text("User Body"),
-                          ),
+                          // Container(
+                          //   child: Text("User Body"),
+                          // ),
                         ]),
                       ),
                     ),

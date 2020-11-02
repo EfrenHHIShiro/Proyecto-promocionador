@@ -17,13 +17,13 @@ class _HomePageState extends State<HomePage> {
   Widget _callPage(int actuallyPage) {
     switch (actuallyPage) {
       case 0:
-        return _homeWidget();
+        return ProfilePage();
       case 1:
         return _homeWidget();
       case 2:
         return _homeWidget();
       case 3:
-        return ProfilePage();
+        return _homeWidget();
       default:
         return _homeWidget();
     }

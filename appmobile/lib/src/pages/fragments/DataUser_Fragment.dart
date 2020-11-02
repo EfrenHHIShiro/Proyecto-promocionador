@@ -27,11 +27,6 @@ class DataUserFragment extends StatelessWidget {
                   title: "Datos",
                 ),
                 TextContainer(
-                  title: "About",
-                  info:
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.",
-                ),
-                TextContainer(
                   title: "Email",
                   info: "efrenherrera@grupogit.com",
                 ),
@@ -56,15 +51,6 @@ class DataUserFragment extends StatelessWidget {
                   title: "Direccion",
                   info: "Calle 21 x 36j Col.Miguel Hidalgo",
                 ),
-                TitlesTextContainer(
-                  title: "Educacion",
-                ),
-                // ListaEducacion(),
-                TitlesTextContainer(
-                  title: "Experiencia",
-                ),
-                // ListaExperiencia(),
-                // ListaExperiencia(),
               ],
             ),
           )
