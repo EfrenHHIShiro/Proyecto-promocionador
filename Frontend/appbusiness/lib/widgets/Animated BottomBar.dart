@@ -1,6 +1,6 @@
+import 'package:appbusiness/constants/color_contstants.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'BottomWaveClipper.dart';
 
 class AnimatedBottomBar extends StatefulWidget {
@@ -116,13 +116,27 @@ class _AnimatedBottomBar extends State<AnimatedBottomBar> with TickerProviderSta
     if(index >= widget.buttonsHiddenIcons.length/2) correspondMargin++;
 
     return GestureDetector(child:
-      Card(color: widget.background, elevation: _animationMargin[0].value, margin: EdgeInsets.only(bottom: _animationMargin[correspondMargin%2].value), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(_animationBorder.value)), child:
-        StreamBuilder(stream: _streamController.stream, initialData: 0, builder: (context, AsyncSnapshot<int> snapshot) {
+      Card(
+        color: kNavBarColor, 
+        elevation: _animationMargin[0].value, 
+        margin: EdgeInsets.only(bottom: _animationMargin[correspondMargin%2].value), 
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(_animationBorder.value)), 
+        child: StreamBuilder(
+          stream: _streamController.stream, 
+          initialData: 0, 
+          builder: (context, AsyncSnapshot<int> snapshot) {
           return
-            Container(width: widgetScreen, height: widgetScreen, padding: EdgeInsets.symmetric(vertical: 10), child:
-              Icon(activated ? widget.buttonsHiddenIcons[index] : widget.buttonsIcons[index], size: snapshot.data == index && !activated ? 30 : 25, color: snapshot.data == index && !activated ? widget.activatedIconColor : widget.defaultIconColor)
+            Container(
+              width: widgetScreen, 
+              height: widgetScreen, 
+              padding: EdgeInsets.symmetric(vertical: 10), 
+              child: Icon(
+                activated ? widget.buttonsHiddenIcons[index] : widget.buttonsIcons[index], 
+                size: snapshot.data == index && !activated ? 30 : 25, 
+                color: snapshot.data == index && !activated ? widget.activatedIconColor : widget.defaultIconColor
+              )
             );
-        })
+          })
       ), onTap: (){
       if(activated) widget.onTapButtonHidden(index);
       else{
@@ -133,15 +147,19 @@ class _AnimatedBottomBar extends State<AnimatedBottomBar> with TickerProviderSta
   }
 
   Widget _buildMiddleButton(double widgetScreen){
-    return Stack(alignment: Alignment.bottomCenter,children: <Widget>[
-      AnimatedOpacity(duration: Duration(milliseconds: 100),opacity: activated ? 0 : 1.0, child:
-        ClipPath(clipper: BottomWaveClipper(convex: _dropContainerPosition), child:
-          Container(color: widget.background, width: widgetScreen + 30, height: widgetScreen*1.2)
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(bottom: _floatButtonPosition == 0 ? widgetScreen/1.8 : _floatButtonPosition), 
+          child: Transform.rotate(
+            angle: (_animationMargin[0].value/20)*2.3, 
+            child: FloatingActionButton(
+              backgroundColor: widget.backgroundColorMiddleIcon, 
+              onPressed:() => doAnimation(widgetScreen), child: Icon(Icons.add, size: 30)
+            )
+          )
         )
-      ),
-      Padding(padding: EdgeInsets.only(bottom: _floatButtonPosition == 0 ? widgetScreen/1.8 : _floatButtonPosition), child:
-        Transform.rotate(angle: (_animationMargin[0].value/20)*2.3, child: FloatingActionButton(backgroundColor: widget.backgroundColorMiddleIcon, onPressed:() => doAnimation(widgetScreen), child: new Icon(Icons.add, size: 30)))
-      )
     ]);
   }
 
@@ -149,8 +167,8 @@ class _AnimatedBottomBar extends State<AnimatedBottomBar> with TickerProviderSta
     List<Widget> content = new List();
 
     for(var i=0; i<widget.buttonsHiddenIcons.length; i++){
-      if(i == widget.buttonsHiddenIcons.length/2)
-        content.add(_buildMiddleButton(widgetScreen));
+      // if(i == widget.buttonsHiddenIcons.length/2)
+      //   content.add(_buildMiddleButton(widgetScreen));
 
       content.add(_buildNormalButton(i, widgetScreen));
     }
@@ -161,7 +179,7 @@ class _AnimatedBottomBar extends State<AnimatedBottomBar> with TickerProviderSta
   @override
   Widget build(BuildContext context) {
 
-    var widgetScreen = MediaQuery.of(context).size.width/5 -6;
+    var widgetScreen = MediaQuery.of(context).size.width/5 - 6;
 
     _animationMargin = [
       Tween<double>(begin: 0.0, end: 20.0).animate(CurvedAnimation(
@@ -204,9 +222,28 @@ class _AnimatedBottomBar extends State<AnimatedBottomBar> with TickerProviderSta
       curve: Curves.ease,
     ));
 
-    return Container(color: Colors.transparent, width: MediaQuery.of(context).size.width, child:
-      Row(mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.end, children: _buildContent(widgetScreen))
+    return 
+    Stack(
+      alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        AnimatedOpacity(duration: Duration(milliseconds: 100),opacity: activated ? 1.0 : 1.0, child:
+          ClipPath(
+            clipper: BottomWaveClipper(convex: _dropContainerPosition), 
+            child:Container(
+              // height: MediaQuery.of(context).size.width/5, 
+              color: activated ? Colors.transparent : kNavBarColor, 
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, 
+                crossAxisAlignment: CrossAxisAlignment.end, 
+                children: _buildContent(widgetScreen))
+            )
+          )
+        ),
+        _buildMiddleButton(widgetScreen)
+      ]
     );
+    
   }
 
   @override
