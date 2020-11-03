@@ -12,7 +12,7 @@ import {
 
 
 import DataPersonal from './DataPersonal';
-import EducationExperience from './EducationExperience';
+import MapRegister from './RegisterMAP';
 import SkillsLanguages from './Documents';
 
  import { useForm } from 'react-hook-form';
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Datos', 'Documentos'];
+const steps = ['Datos','Ubicación', 'Documentos'];
 
 export default function Checkout() {
   const classes = useStyles();
@@ -95,9 +95,9 @@ export default function Checkout() {
       case 0:
         return <DataPersonal />;
       case 1:
+        return <MapRegister />;
+      case 2:
         return <SkillsLanguages />;
-      // case 2:
-      //   return <SkillsLanguages />;
       default:
         throw new Error('Unknown step');
     }

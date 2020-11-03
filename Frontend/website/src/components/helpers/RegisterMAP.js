@@ -10,8 +10,8 @@ import { red, pink } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import Add from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
-import {withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
 // import credentials from '../components/helpers/credentials'
+import GoogleMap from '../../components/GoogleMap'
 
 
 // npm add react-native-web
@@ -47,16 +47,8 @@ const useStyles = makeStyles({
   },
 });
 
-const mapURL=`https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQdWZWsNyakl30EbvVherj04c9hcqFc8&callback=initMap`;
-const Map = (props)=>{
-return (
-  <GoogleMap
-  defaultZoom={10}
-  defaultCenter={{lat: -34.397, lng: 150.644}}
-  />
-)
-}
-const EducationExperience = () => {
+
+const MapRegister = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -66,12 +58,7 @@ const EducationExperience = () => {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <div>
-           <Map
-         // googleMapURL={mapURL}
-          containerElement={ <div style={{height:'200px'}}/>}
-          mapElement= {<div style={{height:'100%'}}/>}
-          loadingElement= {<p>Cargando</p>}
-          />
+            <GoogleMap/>
           </div>
         </Grid>
       </Grid>
@@ -79,8 +66,4 @@ const EducationExperience = () => {
   );
 }
 
-export default withScriptjs(
-  withGoogleMap(
-    Map
-  )
-)
+export default MapRegister
