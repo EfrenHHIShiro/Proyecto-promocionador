@@ -11,11 +11,10 @@ class BottomWaveClipper extends CustomClipper<Path> {
     double difference = size.height*0.168;
 
     Path path = Path();
-    path.lineTo(0, size.height);
-    path.lineTo(0, difference);
-    path.quadraticBezierTo(size.width/2, size.height - size.height * convex, size.width, difference);
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
+    path.quadraticBezierTo(0, size.height, 0, size.height);
+    path.quadraticBezierTo(size.width, size.height, size.width, size.height);
+    path.quadraticBezierTo(size.width, size.height, size.width, 0);
+    path.moveTo(size.width/2, 0);
     return path;
   }
 

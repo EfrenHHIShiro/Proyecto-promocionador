@@ -1,6 +1,7 @@
-import 'package:appbusiness/constants/color_contstants.dart';
-import 'package:appbusiness/widgets/AnimatedBottomBar.dart';
+import 'package:appbusiness/widgets/Animated%20BottomBar.dart';
 import 'package:flutter/material.dart';
+
+import 'package:appbusiness/constants/color_contstants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -33,7 +34,8 @@ class _HomePageState extends State<HomePage> {
           ]
         )
       ),
-      bottomNavigationBar: AnimatedBottomBar(
+      bottomNavigationBar: Builder(builder: (context) =>
+        new AnimatedBottomBar(
             defaultIconColor: Colors.black,
             activatedIconColor: Colors.redAccent,
             background: Colors.white,
@@ -48,10 +50,10 @@ class _HomePageState extends State<HomePage> {
             onTapButtonHidden: (i){
               _alertExample("You touched at button of index $i");
             },
-          ),
+          )
+        ),
     );
   }
-
   
   Future<void> _alertExample(String message) async {
     return showDialog<void>(
