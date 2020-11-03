@@ -1,3 +1,7 @@
+import 'package:appmobile/src/Widgets/AlreadyAccount.dart';
+import 'package:appmobile/src/Widgets/OrDivider.dart';
+import 'package:appmobile/src/Widgets/RoundedButton.dart';
+import 'package:appmobile/src/Widgets/SocialIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -21,11 +25,6 @@ class LoginPage extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(right: 30, bottom: 60, top: 80),
-                      child:
-                          SvgPicture.asset('assets/images/logo_icon_git.svg'),
-                    ),
-                    Container(
                         margin: EdgeInsets.only(right: 30, bottom: 60, top: 80),
                         child: Text(
                           'BarUser',
@@ -39,15 +38,28 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 //Email
-                TextFieldContainer(
-                  text: "Email",
-                  icon: Icons.alternate_email,
+                RoundedInputField(
+                  hintText: "Email",
+                  onChanged: (value) {},
                 ),
                 //Password
                 TextFieldPasswordContainer(
                   text: "Contraseña",
                   icon: Icons.vpn_key,
                   suffixIcon: Icons.remove_red_eye,
+                ),
+                //Recuperar contraseña
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "¿Se te olvido la contraseña?",
+                        style: TextStyle(color: kTextfieldColor),
+                      ),
+                    ),
+                  ],
                 ),
                 // Button Iniciar Sesion
                 ButtonContainer(
@@ -57,25 +69,22 @@ class LoginPage extends StatelessWidget {
                   },
                 ),
                 // Divisor
-                Divider(
-                  height: 100.0,
-                  color: kDividerColor,
-                  thickness: 2.0,
-                  indent: 30.0,
-                  endIndent: 30.0,
-                ),
-                // Recuperar contraseña
-                Container(
-                  margin: EdgeInsets.only(bottom: 50),
-                  child: Text(
-                    "¿Se te olvido tu contraseña?",
-                    style: TextStyle(
-                      color: kTextWhiteColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
+                OrDiviser(),
+                //Login redes
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocialIcon(
+                      iconSrc: "assets/images/google.svg",
+                      press: () {},
                     ),
-                  ),
-                )
+                    SocialIcon(
+                      iconSrc: "assets/images/facebook.svg",
+                      press: () {},
+                    ),
+                  ],
+                ),
+                AlreadyAccount(),
               ],
             ),
           ],

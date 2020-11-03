@@ -3,35 +3,24 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class TextFieldContainer extends StatelessWidget {
-  final String text;
-  final IconData icon;
+  final Widget child;
   const TextFieldContainer({
     Key key,
-    this.text,
-    this.icon,
+    this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical:15),
+      margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       width: size.width * 0.8,
       decoration: BoxDecoration(
-        color: kTextfieldColor,
-        borderRadius: BorderRadius.circular(3),
+        color: kButtonColor,
+        borderRadius: BorderRadius.circular(29),
       ),
-      child: TextField(
-        decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: kPrimaryColor,
-          ),
-          hintText: text,
-          border: InputBorder.none,
-        )
-      ),
+      child: child,
     );
   }
 }

@@ -2,25 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-
 class ButtonContainer extends StatelessWidget {
   final String text;
   final Function onPressed;
-  const ButtonContainer({
-    Key key,
-    this.text,
-    this.onPressed
-  }) : super(key: key);
+  const ButtonContainer({Key key, this.text, this.onPressed}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(top: 40, bottom: 30),
+      margin: EdgeInsets.symmetric(vertical: 20),
       width: size.width * 0.8,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(29),
         child: FlatButton(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
           color: kButtonColor,
           onPressed: onPressed,
           child: Text(

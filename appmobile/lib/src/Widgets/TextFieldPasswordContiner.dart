@@ -2,24 +2,21 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-
 class TextFieldPasswordContainer extends StatefulWidget {
   final String text;
   final IconData icon;
   final IconData suffixIcon;
-  TextFieldPasswordContainer({
-    Key key,
-    this.text,
-    this.icon,
-    this.suffixIcon
-  }) : super(key: key);
+  TextFieldPasswordContainer({Key key, this.text, this.icon, this.suffixIcon})
+      : super(key: key);
 
   @override
-  _TextFieldPasswordContainerState createState() => _TextFieldPasswordContainerState();
+  _TextFieldPasswordContainerState createState() =>
+      _TextFieldPasswordContainerState();
 }
 
-class _TextFieldPasswordContainerState extends State<TextFieldPasswordContainer> {
-   // Initially password is obscure
+class _TextFieldPasswordContainerState
+    extends State<TextFieldPasswordContainer> {
+  // Initially password is obscure
   bool _obscureText = true;
 
   String _password;
@@ -35,31 +32,30 @@ class _TextFieldPasswordContainerState extends State<TextFieldPasswordContainer>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(top: 20, bottom:60),
+      margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       width: size.width * 0.8,
       decoration: BoxDecoration(
         color: kTextfieldColor,
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(29),
       ),
       child: TextField(
-        obscureText: _obscureText,
-        decoration: InputDecoration(
-          icon: Icon(
-            widget.icon,
-            color: kPrimaryColor,
-          ),
-          hintText: widget.text,
-          border: InputBorder.none,
-          suffixIcon: IconButton(
+          obscureText: _obscureText,
+          decoration: InputDecoration(
             icon: Icon(
-              widget.suffixIcon,
+              widget.icon,
               color: kPrimaryColor,
             ),
-            onPressed: _toggle,
-          ),
-        )
-      ),
+            hintText: widget.text,
+            border: InputBorder.none,
+            suffixIcon: IconButton(
+              icon: Icon(
+                widget.suffixIcon,
+                color: kPrimaryColor,
+              ),
+              onPressed: _toggle,
+            ),
+          )),
     );
   }
 }

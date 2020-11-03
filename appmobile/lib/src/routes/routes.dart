@@ -1,11 +1,10 @@
+import 'package:appmobile/src/pages/SplashScreen.dart';
 import 'package:flutter/material.dart';
-
-import 'package:appmobile/src/pages/auth/login_page.dart';
 import 'package:appmobile/src/pages/Home_Page.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
-    '/': (BuildContext context) => LoginPage(),
+    '/': (BuildContext context) => SplashScreen(),
     'home': (BuildContext context) => HomePage(),
   };
 }
