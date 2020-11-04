@@ -14,7 +14,7 @@ In the project directory, you can run:
 ### `npm install @material-ui/core`
 ### `npm install @material-ui/icons`
 ### `npm install --save google-map-react`
-
+### `npm install --save react-places-autocomplete`
 
 ### `npm start`
 

@@ -1,4 +1,4 @@
-import 'package:appmobile/src/Widgets/RegisterAccount.dart';
+import 'package:appmobile/src/Widgets/AlreadyAccount.dart';
 import 'package:appmobile/src/Widgets/OrDivider.dart';
 import 'package:appmobile/src/Widgets/RoundedButton.dart';
 import 'package:appmobile/src/Widgets/SocialIcon.dart';
@@ -9,7 +9,7 @@ import 'package:appmobile/src/Widgets/TextFieldPasswordContiner.dart';
 
 import '../../constants.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
                   children: <Widget>[
                     Container(
                         margin: EdgeInsets.only(
-                            right: 0, bottom: 35, top: 60, left: 10),
+                            right: 0, bottom: 35, top: 50, left: 10),
                         child: Text(
                           'BarUser',
                           textAlign: TextAlign.center,
@@ -46,6 +46,11 @@ class LoginPage extends StatelessWidget {
                   text: "Contraseña",
                   icon: Icons.vpn_key,
                   suffixIcon: Icons.remove_red_eye,
+                ),
+                //Confirmed Password
+                TextFieldPasswordContainer(
+                  text: "Confirmar Contraseña",
+                  icon: Icons.vpn_key,
                 ),
                 //Recuperar contraseña
                 Row(
@@ -83,7 +88,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                RegisterAccount(),
+                AlreadyAccount(),
               ],
             ),
           ],

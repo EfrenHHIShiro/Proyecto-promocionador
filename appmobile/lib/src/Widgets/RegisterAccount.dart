@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class AlreadyAccount extends StatelessWidget {
+class RegisterAccount extends StatelessWidget {
   final bool login;
   final Function press;
-  const AlreadyAccount({
+  const RegisterAccount({
     Key key,
     this.login = true,
     this.press,
@@ -17,15 +17,15 @@ class AlreadyAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          "¿Ya eres usuario?",
+          "¿Aún no estás en Where is the Bar?",
           style: TextStyle(color: kTextfieldColor),
         ),
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacementNamed(context, 'login');
+            Navigator.pushReplacementNamed(context, 'register');
           },
           child: Text(
-            " Iniciar sesión",
+            " Registrate",
             style: TextStyle(
               color: kTextfieldColor,
               fontWeight: FontWeight.bold,
