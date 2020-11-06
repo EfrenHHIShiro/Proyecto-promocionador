@@ -1,7 +1,7 @@
 package application
 
 import (
-	"promocionadorApi/Business/domain"
+	"promocionadorApi/business/domain"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )

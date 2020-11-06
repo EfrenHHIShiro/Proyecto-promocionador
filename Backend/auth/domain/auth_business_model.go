@@ -1,6 +1,10 @@
 package domain
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"promocionadorApi/business/domain"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type LoginBusiness struct {
 }
@@ -9,25 +13,20 @@ type AuthenticateBusiness struct {
 }
 
 type RegisterBusiness struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty"`
-	Name         string             `bson:"businessname"`
-	Rfc          string             `bson:"rfc"`
-	Socialreason string             `bson:"socialreason"`
-	Email        string             `bson:"email"`
-	Cellphone    string
-	Address      string
-	postalcode   string
-	Longitude    string
-	Latitude     string
-	IDCountry    primitive.ObjectID
-	IDState      primitive.ObjectID
-	Documents    []*Document
-	IsFirst      bool
-	Status       bool
-}
-
-type Document struct {
-	ID            primitive.ObjectID `bson:"_idDocument"`
-	DocumentImage string             `bson:"document"`
-	Status        bool               `bson:"status"`
+	ID           primitive.ObjectID `bson:"_id,omitempty" json:"-"`
+	IDCategory   primitive.ObjectID `bson:"_idcategory"   json:"idcategory"`
+	Name         string             `bson:"businessname"  json:"businessname"`
+	Rfc          string             `bson:"rfc"           json:"rfc"`
+	Socialreason string             `bson:"socialreason"  json:"socialreason"`
+	Email        string             `bson:"email"         json:"email"`
+	Cellphone    string             `bson:"cellphone" json:"cellphone"`
+	Address      string             `bson:"address" json:"address"`
+	Postalcode   string             `bson:"postalcode" json:"postalcode"`
+	Longitude    string             `bson:"longitude" json:"longitude"`
+	Latitude     string             `bson:"latitude" json:"latitude"`
+	Country      domain.Country     `bson:"country" json:"country"`
+	Documents    []*domain.Document `bson:"documents" json:"-"`
+	IsFirst      bool               `bson:"isfirst" json:"-"`
+	Status       bool               `bson:"status" json:"-"`
+	IsOpen       bool               `bson:"isopen" json:"-"`
 }

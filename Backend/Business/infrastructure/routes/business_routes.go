@@ -7,8 +7,8 @@ import (
 )
 
 func MakeBusinessRoutes(r *echo.Echo, c controller.AppController) {
-	// r.POST("category/CategoryCreate/", c.CategoryCreator)
-	// r.PUT("category/CategoryUpdate/:id", c.CategoryUpdate)
+	r.POST("business/BusinessGetByCategory/", c.BusinessGetByCategory)
+	r.GET("business/BusinessGetById/:id", c.BusinessGetById)
+	r.PUT("business/BusinessApproveOrDeny/", c.BusinessApproveOrDeny)
 	// r.DELETE("category/CategoryDelete/:id", c.CategoryDelete)
-	// r.GET("category/CategorysGet/", c.CategorysGet)
 }

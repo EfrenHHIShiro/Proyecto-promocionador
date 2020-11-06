@@ -23,7 +23,7 @@ func (r *authRepository) LoginUser(ctx context.Context, object *domain.LoginUser
 
 	if object.TokenMovil != "" {
 		update := bson.M{
-			"$set": bson.M{"tokenMovil": object.TokenMovil},
+			"$set": object,
 		}
 
 		if err := r.db.Collection(database.CUser).FindOneAndUpdate(ctx, bson.M{"email": object.Email}, update).Err(); err != nil {

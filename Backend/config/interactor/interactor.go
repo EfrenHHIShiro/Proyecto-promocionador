@@ -23,6 +23,7 @@ func NewInteractor(db *mongo.Database) Interactor {
 func (i *interactor) NewAppController() controller.AppController {
 	appController := &appController{}
 	appController.AuthController = i.NewAuthController()
+	appController.BusinessController = i.NewBusinessController()
 	appController.CategoryController = i.NewCategoryController()
 	appController.CountryController = i.NewCountryController()
 	appController.UserController = i.NewUserController()
@@ -31,6 +32,7 @@ func (i *interactor) NewAppController() controller.AppController {
 
 func (i *interactor) NewMakeRoutes(r *echo.Echo, c controller.AppController) {
 	i.NewMakeAuthRoutes(r, c)
+	i.NewMakeBusinessRoutes(r, c)
 	i.NewMakeCategoryRoutes(r, c)
 	i.NewMakeCountryRoutes(r, c)
 	i.NewMakeUserRoutes(r, c)
