@@ -13,3 +13,6 @@ const kSwitchTrackColor = Color.fromRGBO(174, 174, 174, 1.0);
 
 const kSwitchColorGreen = Color.fromRGBO(40, 167, 69, 1.0);
 const kSwitchTrackColorGreen = Color.fromRGBO(131, 207, 148, 1.0);
+
+//Alert
+const kAlertkColor = Color.fromRGBO(255, 0, 0, 1.0);

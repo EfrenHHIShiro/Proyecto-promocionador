@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
                         margin: EdgeInsets.only(
                             right: 0, bottom: 35, top: 60, left: 10),
                         child: Text(
-                          'BarUser',
+                          'Where is the Bar?',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 40.0,
@@ -52,7 +52,9 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, 'changepass');
+                      },
                       child: Text(
                         "¿Se te olvido la contraseña?",
                         style: TextStyle(color: kTextfieldColor),

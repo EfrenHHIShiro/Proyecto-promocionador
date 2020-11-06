@@ -5,11 +5,10 @@ import 'package:appmobile/src/Widgets/SocialIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:appmobile/src/Widgets/ButtonContainer.dart';
-import 'package:appmobile/src/Widgets/TextFieldPasswordContiner.dart';
 
 import '../../constants.dart';
 
-class RegisterPage extends StatelessWidget {
+class ChangePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,38 +40,11 @@ class RegisterPage extends StatelessWidget {
                   hintText: "Email",
                   onChanged: (value) {},
                 ),
-                //Password
-                TextFieldPasswordContainer(
-                  text: "Contraseña",
-                  icon: Icons.vpn_key,
-                  suffixIcon: Icons.remove_red_eye,
-                ),
-                //Confirmed Password
-                TextFieldPasswordContainer(
-                  text: "Confirmar Contraseña",
-                  icon: Icons.vpn_key,
-                ),
-                //Recuperar contraseña
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, 'changepass');
-                      },
-                      child: Text(
-                        "¿Se te olvido la contraseña?",
-                        style: TextStyle(color: kTextfieldColor),
-                      ),
-                    ),
-                  ],
-                ),
+
                 // Button Iniciar Sesion
                 ButtonContainer(
-                  text: "Iniciar Sesion",
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'home');
-                  },
+                  text: "Cambiar Contraseña",
+                  onPressed: () {},
                 ),
                 // Divisor
                 OrDiviser(),

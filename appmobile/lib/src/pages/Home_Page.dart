@@ -1,4 +1,5 @@
 import 'package:appmobile/src/pages/auth/login_page.dart';
+import 'package:appmobile/src/pages/fragments/Home_Fragment.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:appmobile/src/pages/Profile_page.dart';
@@ -18,9 +19,9 @@ class _HomePageState extends State<HomePage> {
   Widget _callPage(int actuallyPage) {
     switch (actuallyPage) {
       case 0:
-        return ProfilePage();
+        return HomeFragment();
       case 1:
-        return _homeWidget();
+        return ProfilePage();
       case 2:
         return _homeWidget();
       case 3:

@@ -1,5 +1,3 @@
-// import 'package:appmobile/src/pages/fragments/Widgets/ListaEducion.dart';
-// import 'package:appmobile/src/pages/fragments/Widgets/ListaExperiencia.dart';
 import 'package:appmobile/src/pages/fragments/Widgets/TitlesTextContainer.dart';
 import 'package:flutter/material.dart';
 

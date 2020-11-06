@@ -1,8 +1,7 @@
 import 'package:appmobile/src/constants.dart';
 import 'package:appmobile/src/pages/fragments/DataUser_Fragment.dart';
-// import 'package:appmobile/src/pages/fragments/SkillsFragment.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'fragments/Widgets/Header.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -15,35 +14,13 @@ class ProfilePage extends StatelessWidget {
       appBar: null,
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             // Imagen Usuario
-            Container(
-                width: 130,
-                height: 130,
-                margin: EdgeInsets.only(top: 50),
-                padding: EdgeInsets.all(30.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                    color: Colors.brown),
-                child: SvgPicture.asset(
-                  'assets/images/usuario.svg',
-                  color: kTextWhiteColor,
-                )),
-            // Name user
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              child: Text(
-                "Efren Hazaar Herrera Isaac",
-                style: TextStyle(color: kTextWhiteColor, fontSize: 20.0),
-              ),
-            ),
-            // Puesto
-            Container(
-              margin: EdgeInsets.only(top: 15, bottom: 10),
-              child: Text(
-                "",
-                style: TextStyle(color: kTextWhiteColor, fontSize: 17.0),
-              ),
+            Header(
+              username: 'Efren Haazar Herrera Isaac',
+              backgroundasset: 'assets/images/the-legend-of-zelda.jpg',
+              userasset: 'assets/images/avatar.jpg',
             ),
             // Tabs
             Container(
@@ -64,7 +41,6 @@ class ProfilePage extends StatelessWidget {
                     Expanded(
                       child: Container(
                         child: TabBarView(children: [
-                          // Icon(Icons.directions_car),
                           DataUserFragment(),
                           Icon(Icons.directions_transit),
                           // Icon(Icons.directions_bike),
