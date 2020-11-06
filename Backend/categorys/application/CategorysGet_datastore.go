@@ -15,14 +15,8 @@ func (r *categoryRepository) CategorysGet(ctx context.Context) ([]*domain.Catego
 		defer cursor.Close(ctx)
 		return nil, err
 	}
-
-	for cursor.Next(ctx) {
-		result := &domain.Category{}
-		err = cursor.Decode(&result)
-		if err != nil {
-			return nil, err
-		}
-		categorys = append(categorys, result)
+	if err = cursor.All(ctx, &categorys); err != nil {
+		return nil, err
 	}
 
 	return categorys, nil

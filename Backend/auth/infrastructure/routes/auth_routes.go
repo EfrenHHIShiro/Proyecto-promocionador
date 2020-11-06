@@ -10,7 +10,8 @@ func MakeAuthRoutes(r *echo.Echo, c controller.AppController) {
 	// Users
 	r.POST("auth/RegisterUser/", c.RegisterUser)
 	r.POST("auth/LoginUser/", c.LoginUser)
-	r.GET("auth/ActivateUser/:id", c.ActiveUserAccount)
+	r.POST("auth/ActivateUser/", c.ActiveUserAccount)
+	r.POST("auth/CheckPinCodeUser/", c.CheckPinUserMovile)
 	// Business
 	r.POST("auth/RegisterBusiness/", c.RegisterBusiness)
 }

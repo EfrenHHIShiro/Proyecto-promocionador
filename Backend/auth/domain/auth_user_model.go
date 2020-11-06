@@ -6,9 +6,9 @@ import (
 )
 
 type LoginUser struct {
-	Email      string `bson:"email"`
-	Password   string `bson:"password"`
-	TokenMovil string `bson:"tokenmovil, omitempty"`
+	Email      string `bson:"-" json:"email"`
+	Password   string `bson:"-" json:"password"`
+	TokenMovil string `bson:"tokenmovil,omitempty" json:"tokenmovil"`
 }
 
 type AuthenticateUsers struct {
@@ -31,7 +31,17 @@ func (ru *RegisterUser) HashPassword() {
 }
 
 type ActiveUserAccount struct {
-	Status bool `bson:"status"`
+	ID           primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	CellPhone    string             `bson:"cellphone" json:"-"`
+	CellPhoneNew string             `bson:"-" json:"cellphone"`
+
+	Status bool `bson:"status" json:"status"`
+}
+type CheckUserAccount struct {
+	ID        primitive.ObjectID `bson:"-" json:"id"`
+	RequestID string             `bson:"-" json:"requestid"`
+	Status    bool               `bson:"status" json:"-"`
+	PinCode   string             `bson:"-" json:"pincode"`
 }
 
 type PetitionChangePasswordUser struct {

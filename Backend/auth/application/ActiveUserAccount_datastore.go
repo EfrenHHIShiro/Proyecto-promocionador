@@ -2,47 +2,59 @@ package application
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"promocionadorApi/auth/domain"
 	"promocionadorApi/config/database"
 
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func (r *authRepository) ActiveUserAccount(ctx context.Context, id string) error {
-
-	userAccount := &domain.ActiveUserAccount{
-		Status: true,
-	}
+func (r *authRepository) ActiveUserAccount(ctx context.Context, object *domain.ActiveUserAccount) (string, error) {
 
 	update := bson.M{
-		"$set": userAccount,
+		"$set": object,
 	}
 
-	objID, _ := primitive.ObjectIDFromHex(id)
+	conditions := bson.M{"cellphone": object.CellPhoneNew}
+	filterID := bson.M{"_id": object.ID}
 
-	if err := r.db.Collection(database.CUser).FindOneAndUpdate(ctx, bson.M{"_id": objID}, update).Err(); err != nil {
-		return err
+	if err := r.db.Collection(database.CUser).FindOne(ctx, conditions).Decode(&object); err != nil {
+		if err := r.db.Collection(database.CUser).FindOne(ctx, filterID).Decode(&object); err != nil {
+			err = errors.New("El usuario no existe.")
+			return "", err
+		}
+
+		if object.Status == false && object.CellPhone == "" {
+			object.CellPhone = object.CellPhoneNew
+			if err := r.db.Collection(database.CUser).FindOneAndUpdate(ctx, filterID, update).Err(); err != nil {
+				return "", err
+			}
+		} else {
+			fmt.Println(" no se que pedoas")
+			if object.Status == true {
+				return "", errors.New("Este usuario ya esta activado.")
+			}
+			if object.CellPhone != object.CellPhoneNew {
+				return "", errors.New("Ya contine un numero diferente de telefono.")
+			}
+		}
+	} else {
+		if object.Status == true {
+			return "", errors.New("Este usuario ya esta activado.")
+		}
 	}
 
-	// send email to create password personal.
-	// useridencript := helpers.Encrypt(strconv.Itoa())
-
-	// templateData := struct {
-	// 	Name  string
-	// 	Email string
-	// 	URL   string
-	// }{
-	// 	Name:  user.Resourcedata.Firstname,
-	// 	Email: user.Resourcedata.Personalemail,
-	// 	URL:   "http://localhost:3000/auth/verify+account/" + useridencript,
-	// }
-	// subject := "Welcome to GrupoGIT"
-	// request := helper.NewRequest([]string{user.Resourcedata.Personalemail}, subject)
-	// if _, err := request.Send("./helper/templates/templateVerifyAccount.html", templateData); err != nil {
-	// 	tx.Rollback()
-	// 	return false, err
+	// send sms to cellphone personal.
+	// response, errResp, err := helpers.SendSmsPinCode(object.CellPhone)
+	// if err != nil {
+	// 	return "", err
+	// } else if response.Status != "0" {
+	// 	fmt.Println("Error status " + errResp.Status + ": " + errResp.ErrorText)
+	// 	return "", err
 	// }
 
-	return nil
+	// return response.RequestId, nil
+	return "simulador", nil
+
 }

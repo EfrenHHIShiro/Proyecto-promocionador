@@ -10,7 +10,9 @@ import (
 
 func (h *authController) RegisterUser(c echo.Context) error {
 
-	object := &domain.RegisterUser{}
+	object := &domain.RegisterUser{
+		Status: false,
+	}
 
 	if err := c.Bind(object); err != nil {
 		return err
@@ -29,5 +31,5 @@ func (h *authController) RegisterUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
 
-	return c.JSON(http.StatusCreated, object)
+	return c.JSON(http.StatusCreated, true)
 }

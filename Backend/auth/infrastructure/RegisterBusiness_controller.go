@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"promocionadorApi/auth/domain"
+	business "promocionadorApi/business/domain"
 	"promocionadorApi/helpers"
 
 	"github.com/labstack/echo/v4"
@@ -16,6 +17,7 @@ func (h *authController) RegisterBusiness(c echo.Context) error {
 	object := &domain.RegisterBusiness{
 		IsFirst: true,
 		Status:  false,
+		IsOpen:  false,
 	}
 
 	data := c.FormValue("data")
@@ -34,7 +36,7 @@ func (h *authController) RegisterBusiness(c echo.Context) error {
 		if err != nil {
 			return err
 		}
-		document := &domain.Document{
+		document := &business.Document{
 			ID:            primitive.NewObjectID(),
 			DocumentImage: str,
 			Status:        false,
@@ -42,13 +44,21 @@ func (h *authController) RegisterBusiness(c echo.Context) error {
 		object.Documents = append(object.Documents, document)
 	}
 
-	// if object.Email == "" ||
-	// 	object.Roleid == 0 ||
-	// 	object.Resourcedata.Firstname == "" ||
-	// 	object.Resourcedata.Lastname == "" ||
-	// 	object.Resourcedata.Personalemail == "" {
-	// 	return echo.NewHTTPError(http.StatusBadRequest, "Syntax error of sent json")
-	// }
+	if object.Name == "" ||
+		object.IDCategory == primitive.NilObjectID ||
+		object.Rfc == "" ||
+		object.Socialreason == "" ||
+		object.Email == "" ||
+		object.Cellphone == "" ||
+		object.Address == "" ||
+		object.Postalcode == "" ||
+		object.Longitude == "" ||
+		object.Latitude == "" ||
+		object.Country.IDCountry == primitive.NilObjectID ||
+		object.Country.IDState == primitive.NilObjectID ||
+		len(object.Documents) < 2 {
+		return echo.NewHTTPError(http.StatusBadRequest, "Syntax error of sent json")
+	}
 
 	ctx := c.Request().Context()
 	if ctx == nil {

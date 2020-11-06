@@ -16,13 +16,8 @@ func (r *countryRepository) CountryGetAll(ctx context.Context) ([]*domain.Countr
 		return nil, err
 	}
 
-	for cursor.Next(ctx) {
-		result := &domain.Country{}
-		err = cursor.Decode(&result)
-		if err != nil {
-			return nil, err
-		}
-		countries = append(countries, result)
+	if err = cursor.All(ctx, &countries); err != nil {
+		return nil, err
 	}
 
 	return countries, nil

@@ -11,11 +11,11 @@ func NewMiddleware(r *echo.Echo) {
 		middleware.Logger(),
 		middleware.Recover(),
 		// middleware.Timeout(60*time.Second),
-		// middleware.StaticWithConfig(middleware.StaticConfig{
-		// 	Root: "helper/images",
-		// }),
+		middleware.StaticWithConfig(middleware.StaticConfig{
+			Root: "helper/images",
+		}),
 		middleware.Static(""),
-		// middleware.Static("helper/images"),
+		middleware.Static("helper/images"),
 		middleware.CORSWithConfig(middleware.CORSConfig{
 			AllowOrigins: []string{"*"},
 			AllowMethods: []string{echo.GET, echo.HEAD, echo.PUT, echo.PATCH, echo.POST, echo.DELETE},
