@@ -2,7 +2,6 @@ import 'package:appmobile/src/Widgets/CustomText.dart';
 import 'package:appmobile/src/Widgets/Options.dart';
 import 'package:appmobile/src/Widgets/SearchContainer.dart';
 import 'package:appmobile/src/constants.dart';
-import 'package:appmobile/src/pages/fragments/Widgets/Events.dart';
 import 'package:flutter/material.dart';
 
 class HomeFragment extends StatelessWidget {
