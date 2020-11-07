@@ -11,9 +11,9 @@ import {
 } from '@material-ui/core/';
 
 
-import DataPersonal from './DataPersonal';
+import BussinesRegister from './BussinesRegister';
 import MapRegister from './RegisterMAP';
-import SkillsLanguages from './Documents';
+import Documents from './Documents';
 
  import { useForm } from 'react-hook-form';
  //import { yupResolver } from '@hookform/resolvers';
@@ -93,11 +93,11 @@ export default function Checkout() {
   const getStepContent = (step) => {
     switch (step) {
       case 0:
-        return <DataPersonal />;
+        return <BussinesRegister />;
       case 1:
         return <MapRegister />;
       case 2:
-        return <SkillsLanguages />;
+        return <Documents />;
       default:
         throw new Error('Unknown step');
     }

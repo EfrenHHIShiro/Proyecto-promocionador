@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const SkillsLanguages = () => {
+const Documents = () => {
   const classes = useStyles();
   return (
     <React.Fragment >
@@ -124,4 +124,4 @@ const SkillsLanguages = () => {
   );
 
 }
-export default SkillsLanguages;
+export default Documents;

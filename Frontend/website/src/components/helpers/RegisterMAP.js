@@ -57,7 +57,7 @@ const MapRegister = () => {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <div>
+          <div >
             <GoogleMap/>
           </div>
         </Grid>

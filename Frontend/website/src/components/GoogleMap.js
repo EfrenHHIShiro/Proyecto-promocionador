@@ -35,13 +35,13 @@ export class MapContainer extends Component {
         geocodeByAddress(address)
           .then(results => getLatLng(results[0]))
           .then(latLng =>{
-            console.log('Success', latLng.lat)
+            console.log('Success', latLng)
             this.setState({address})
             this.setState({mapCenter: latLng})
           })
           .catch(error => console.error('Error', error));
       };
-   
+        
     render() {
       return (
           <div>
