@@ -24,10 +24,15 @@ import { FormChange } from '../../actions/persistenceActions';
 
 
 const useStyles = makeStyles((theme) => ({
+  layout2:{
+    width: '1000px',
+  },
   layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(6),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 800,
       marginLeft: 'auto',
@@ -95,7 +100,7 @@ export default function Checkout() {
       case 0:
         return <BussinesRegister />;
       case 1:
-        return <MapRegister />;
+        return <MapRegister className="layout2"/>;
       case 2:
         return <Documents />;
       default:

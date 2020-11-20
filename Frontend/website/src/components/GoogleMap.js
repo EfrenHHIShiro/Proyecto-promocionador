@@ -8,10 +8,10 @@ import PlacesAutocomplete, {
   import Grid from '@material-ui/core/Grid';
 
 const containerStyle = {
-    width: '25%',
+    width: '48%',
     height: '50%'
   }
-export class MapContainer extends Component {
+ class MapContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = { address: '',
