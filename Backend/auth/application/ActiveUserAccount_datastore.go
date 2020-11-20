@@ -3,7 +3,6 @@ package application
 import (
 	"context"
 	"errors"
-	"fmt"
 	"promocionadorApi/auth/domain"
 	"promocionadorApi/config/database"
 
@@ -31,7 +30,6 @@ func (r *authRepository) ActiveUserAccount(ctx context.Context, object *domain.A
 				return "", err
 			}
 		} else {
-			fmt.Println(" no se que pedoas")
 			if object.Status == true {
 				return "", errors.New("Este usuario ya esta activado.")
 			}

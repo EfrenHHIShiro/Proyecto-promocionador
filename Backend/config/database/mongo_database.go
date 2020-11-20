@@ -30,7 +30,6 @@ func InitData() *mongo.Database {
 	if err != nil {
 		panic(err)
 	}
-	// defer client.Disconnect(ctx)
 
 	return client.Database(dbName)
 }

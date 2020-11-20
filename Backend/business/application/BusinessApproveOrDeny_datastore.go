@@ -35,8 +35,10 @@ func (r *businessRepository) BusinessApproveOrDeny(ctx context.Context, object *
 		}
 		if object.Status != false {
 			// Send email de aviso de negacion
+
 		} else {
 			// Send emial de aviso de aprovacion
+
 		}
 	}
 
