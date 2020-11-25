@@ -76,11 +76,13 @@ const Checkout =()=> {
 
   const formData = {
     bussinesname: "",
-    middleName: "",
-    lastName: "",
+    rfc: "",
+    socialreason: "",
     email: "",
-    city: "",
-    state: "",
+    cellphone: "",
+    addres:"",
+    longitude: "",
+    latitude:"",
     country: ""
   };
   const onSubmit = data=> {
@@ -90,7 +92,7 @@ const Checkout =()=> {
     handleNext();
     console.log(formData, 'este es')
   }
-  const { register, handleSubmit, errors } = useForm({
+  const { handleSubmit} = useForm({
    // resolver: yupResolver(schema),
     formData
   });

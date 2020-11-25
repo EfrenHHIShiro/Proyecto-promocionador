@@ -140,7 +140,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
-                            name="resourcedatas.address"
+                            name="socialreason"
                             label="Razon social"
                             fullWidth
                             autoComplete="shipping address-line1"
@@ -148,7 +148,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            name="resourcedatas.personalemail"
+                            name="email"
                             label="Email"
                             fullWidth
                             autoComplete="given-name"
@@ -156,8 +156,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            id="Businessmail"
-                            name="email"
+                            name="cellphone"
                             label="Celular"
                             fullWidth
                             autoComplete="family-name"
@@ -165,8 +164,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            id="Cellphone"
-                            name="Cellphone"
+                            name="addres"
                             label="Direccion"
                             fullWidth
                             autoComplete="family-name"
@@ -174,8 +172,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            id="city"
-                            name="city"
+                            id="country"
                             label="Ciudad"
                             fullWidth
                             autoComplete="shipping address-level2"
@@ -186,8 +183,7 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            id="zip"
-                            name="zip"
+                            name="postalcode"
                             label="Zip / Postal code"
                             fullWidth
                             autoComplete="shipping postal-code"
