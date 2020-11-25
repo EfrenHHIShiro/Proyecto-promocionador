@@ -11,44 +11,39 @@ const containerStyle = {
     width: '48%',
     height: '50%'
   }
- class MapContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { address: '',
-
+ const  MapContainer=()=> {
+        const [state, setState] = React.useState({ address: '',
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-  
         mapCenter: {
             lat: 20.9753700,
             lng:  -89.6169600,
         } 
-    }
- };
-   
-    handleChange = address => {
-        this.setState({ address });
+    })
+
+
+    const handleChange = address => {
+        setState({ address });
       };
      
-      handleSelect = address => {
+      const handleSelect = address => {
         geocodeByAddress(address)
           .then(results => getLatLng(results[0]))
           .then(latLng =>{
-            console.log('Success', latLng)
-            this.setState({address})
-            this.setState({mapCenter: latLng})
+            console.log('Success', latLng.lng)
+            setState({address})
+            setState({mapCenter: latLng})
           })
           .catch(error => console.error('Error', error));
       };
         
-    render() {
       return (
           <div>
-                   <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
+      <PlacesAutocomplete
+        value={state.address}
+        onChange={state.handleChange}
+        onSelect={state.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
@@ -85,32 +80,29 @@ const containerStyle = {
       </PlacesAutocomplete>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-        <Map google={this.props.google} 
+        <Map google={google} 
             zoom={14 }
             containerStyle={containerStyle}
             initialCenter={{
-                lat: this.state.mapCenter.lat,
-                lng: this.state.mapCenter.lng
+                lat: state.mapCenter.lat,
+                lng: state.mapCenter.lng
             }}
             center={{
-                lat: this.state.mapCenter.lat,
-                lng: this.state.mapCenter.lng
+                lat: setState.mapCenter.lat,
+                lng: setState.mapCenter.lng
             }}
             >
           <Marker
           position={{
-            lat: this.state.mapCenter.lat,
-            lng: this.state.mapCenter.lng
+            lat: setState.mapCenter.lat,
+            lng: setState.mapCenter.lng
           }}/>
         </Map>
         </Grid>
         </Grid>
         </div>
       )
-    }
-}
-
-  
+    };
 
   export default GoogleApiWrapper({
     apiKey: ('AIzaSyB-lgHBNL41XX6C8k6IPAjMOAA4anR3QGo')

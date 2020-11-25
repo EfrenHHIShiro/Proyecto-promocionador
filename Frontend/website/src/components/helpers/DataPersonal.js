@@ -11,10 +11,12 @@ import {
     withStyles
 } from '@material-ui/core'
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { Field } from "formik";
 
 //import { ErrorMessage } from '@hookform/error-message';
 
-const DataPersonal = ({ register, errors, datas}) => {
+const DataPersonal = formikProps => {
+    const { errors, touched } = formikProps;
 
     const useStyles = makeStyles((theme) => ({
         content: {
@@ -113,7 +115,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                 <Grid container spacing={4} className={ classes.error }>
                     <Grid item xs={12} sm={6} >
                         <TextField
-                            inputRef={ register } 
+                           
                             name="resourcedatas.firstname"
                             label="Nombre del negocio"
                             // helperText={<ErrorMessage errors={ errors } name="resourcedatas.firstname" /> }
@@ -123,7 +125,7 @@ const DataPersonal = ({ register, errors, datas}) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            inputRef={ register }
+                           
                             name="resourcedatas.lastname"
                             label="RFC"
                             // helperText={ <ErrorMessage errors={ errors } name="resourcedatas.lastname" /> }

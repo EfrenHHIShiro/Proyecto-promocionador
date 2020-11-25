@@ -9,17 +9,18 @@ import {
   Typography,
   makeStyles 
 } from '@material-ui/core/';
-
+import { Field } from "formik";
 
 import BussinesRegister from './BussinesRegister';
 import MapRegister from './RegisterMAP';
 import Documents from './Documents';
 
- import { useForm } from 'react-hook-form';
- //import { yupResolver } from '@hookform/resolvers';
-import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { FormChange } from '../../actions/persistenceActions';
+import { useForm } from 'react-hook-form';
+//  //import { yupResolver } from '@hookform/resolvers';
+// import * as yup from 'yup';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { FormChange } from '../../actions/persistenceActions';
+import {Formik, Form} from "formik";
 
 
 
@@ -60,64 +61,70 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Datos','Ubicación', 'Documentos'];
 
-export default function Checkout() {
+const Checkout =()=> {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    console.log(formData, 'Tiene')
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
-  
-  const dispatch = useDispatch();
-  const form = useSelector(state => state.persistence.form);
-  
-  const schema = yup.object().shape({
-    user: yup.object({
-      firstname: yup.string().trim().required(() => <span>First name is required</span>),
-      lastname: yup.string().trim().required(() => <span>Last name is required</span>),
-    }),
-  });
-
+  const formData = {
+    bussinesname: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    city: "",
+    state: "",
+    country: ""
+  };
+  const onSubmit = data=> {
+    // data.image = data.image[0];
+    // console.log(form);
+    // dispatch( FormChange(data) );
+    handleNext();
+    console.log(formData, 'este es')
+  }
   const { register, handleSubmit, errors } = useForm({
    // resolver: yupResolver(schema),
-    defaultValues: form,
+    formData
   });
 
-  const onSubmit = data => {
-    // data.image = data.image[0];
-    console.log(form);
-    dispatch( FormChange(data) );
-    handleNext();
-  }
-
-  const getStepContent = (step) => {
-    switch (step) {
+  const renderStep = (activeStep,values, errors, touched) => {
+    switch (activeStep) {
       case 0:
-        return <BussinesRegister />;
+        return <BussinesRegister touched={touched} errors={errors}   />;
       case 1:
-        return <MapRegister className="layout2"/>;
+        return <MapRegister touched={touched} errors={errors}   className="layout2"/>;
       case 2:
-        return <Documents />;
+        return <Documents values={values} />;
       default:
         throw new Error('Unknown step');
     }
   }
+  const validate = values => {
+    const errors = {};
+    if (!values.bussinesname) {
+      errors.bussinesname = "Required";
+    }
+
+    if (!values.middleName) {
+      errors.middleName = "Required";
+    }
+
+    return errors;
+  };
 
   return (
-    <React.Fragment>
-      {
-        console.log(form)
-      }
-      <CssBaseline />
-      <form className={classes.layout} onSubmit={handleSubmit(onSubmit) } >
+    <>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-              NUEVO REGISTRO
+              NUEVOS REGISTROS
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
@@ -138,8 +145,15 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
-                
+                <Formik
+                  enableReinitialize
+                  initialValues={{ ...formData }}
+                  onSubmit={handleSubmit}
+                  validate={validate}
+                >
+                {({values, errors, touched}) => (
+                <Form className={classes.layout} onSubmit={handleSubmit(onSubmit)}   >
+                {renderStep(activeStep, values,errors, touched)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
@@ -155,11 +169,15 @@ export default function Checkout() {
                     {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
                   </Button>
                 </div>
+                </Form>   
+                        )}   
+                </Formik>   
               </React.Fragment>
             )}
           </React.Fragment>
         </Paper>  
-      </form>
-    </React.Fragment>
+        </>
   );
+
 }
+export default Checkout

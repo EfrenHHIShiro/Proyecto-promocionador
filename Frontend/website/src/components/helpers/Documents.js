@@ -9,6 +9,7 @@ import { Card, CardContent, Paper, Button } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { List, ListItem, ListItemText } from '@material-ui/core/';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,12 +49,21 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Documents = () => {
+const Documents = (formikProps) => {
+  const { bussinesname} = formikProps.values;
   const classes = useStyles();
   return (
     <React.Fragment >
       <Typography variant="h6" gutterBottom>
         Proporcione los documentos correspondientes
+        <List>
+          <ListItem>
+            <ListItemText
+              primary='First Name'
+              secondary={bussinesname}
+            />
+          </ListItem>
+          </List>
             </Typography>
       <div >
         <Grid container spacing={4}>

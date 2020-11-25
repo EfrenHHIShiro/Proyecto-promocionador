@@ -11,10 +11,10 @@ import {
 } from '@material-ui/core'
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import updateRegister from '../redux/actions/actions'
-import {connect} from 'react-redux';
+import { Field } from "formik";
 //import { ErrorMessage } from '@hookform/error-message';
 
-const DataPersonal = ({updateRegister}) => {
+const DataPersonal = formikProps=> {
 
 
     const useStyles = makeStyles((theme) => ({
@@ -87,12 +87,15 @@ const DataPersonal = ({updateRegister}) => {
         },
     }));
     const classes = useStyles();
-    
+    const { errors, touched } = formikProps;
+
+    const asd = formikProps.values;
+    console.log(asd)
     return (
         <>
 
             <Typography variant="h6" gutterBottom>
-                Datos
+                Dato
             </Typography>
             <Grid container>
                 <Grid item xs={12}>
@@ -114,13 +117,15 @@ const DataPersonal = ({updateRegister}) => {
                 </Grid>
                 <Grid container spacing={4} className={ classes.error }>
                     <Grid item xs={12} sm={6} >
-                        <TextField                         
-                            name="bussinessname"
+                        <Field
+                             as={TextField}                         
+                            name="bussinesname"
                             label="Nombre del negocio"
+                            error={touched.bussinesname && errors.bussinesname}
+                            helperText={touched.bussinesname && errors.bussinesname}
                             // helperText={<ErrorMessage errors={ errors } name="resourcedatas.firstname" /> }
                             fullWidth
                             autoComplete="given-name"
-                            onChange={(e)=>console.log(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -204,4 +209,4 @@ const DataPersonal = ({updateRegister}) => {
     );
 }
 
-export default connect(null, {updateRegister})( DataPersonal);
+export default DataPersonal
