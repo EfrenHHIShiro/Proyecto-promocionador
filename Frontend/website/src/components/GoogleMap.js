@@ -38,8 +38,6 @@ const containerStyle = {
             console.log('Success', latLng)
             this.setState({address})
             this.setState({mapCenter: latLng})
-            .then(console.log({mapCenter:lat}))
-            .then (console.log({mapCenter:Lng}))
           })
           .catch(error => console.error('Error', error));
       };

@@ -10,6 +10,10 @@ import 'package:appmobile/src/Widgets/TextFieldPasswordContiner.dart';
 import '../../constants.dart';
 
 class LoginPage extends StatelessWidget {
+  
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,15 +41,20 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 //Email
-                RoundedInputField(
-                  hintText: "Email",
+                TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                      icon: Icon(Icons.email), hintText: "Email"),
                   onChanged: (value) {},
                 ),
                 //Password
-                TextFieldPasswordContainer(
-                  text: "Contraseña",
-                  icon: Icons.vpn_key,
-                  suffixIcon: Icons.remove_red_eye,
+                TextFormField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.vpn_key),
+                    hintText: "Contraseña",
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                  ),
                 ),
                 //Recuperar contraseña
                 Row(
