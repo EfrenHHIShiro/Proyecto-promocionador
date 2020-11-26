@@ -23,23 +23,20 @@ class _SpashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Spacer(),
-            Center(
-              child: FractionallySizedBox(
-                widthFactor: .6,
-                child: FlutterLogo(size: 400),
+    return new Scaffold(
+      body: new Stack(
+        children: <Widget>[
+           new Container(
+             constraints: BoxConstraints.expand(),
+            decoration: new BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage("assets/images/Splash bar.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
-            Spacer(),
-            CircularProgressIndicator(),
-            Spacer(),
-            Text('Bienvenido/')
-          ],
-        ),
+            child: new Center(child: CircularProgressIndicator()),
+          ),
+        ],
       ),
     );
   }
