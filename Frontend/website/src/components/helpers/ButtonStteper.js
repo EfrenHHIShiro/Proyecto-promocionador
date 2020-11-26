@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const StepButton = props => {
+
   const { activeStep } = props;
   const classes = useStyles();
   switch (activeStep) {
@@ -22,7 +23,7 @@ export const StepButton = props => {
             type="submit"
             className={classes.button}
           >
-            Continue
+            SEGUIR
           </Button>
         </>
       );
@@ -35,20 +36,20 @@ export const StepButton = props => {
             type="submit"
             className={classes.button}
           >
-            Submit
+            SEGUIR
           </Button>
         </>
       );
-      case 3:
+      case 2:
         return (
           <>
             <Button
               variant="contained"
               color="primary"
               type="submit"
-              className={classes.button}
+              className={classes.button} 
             >
-              Submit
+              SUBIR
             </Button>
           </>
         );

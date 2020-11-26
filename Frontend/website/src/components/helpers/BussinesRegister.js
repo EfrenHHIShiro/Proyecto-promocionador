@@ -11,12 +11,15 @@ import {
 } from '@material-ui/core'
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import updateRegister from '../redux/actions/actions'
-import { Field } from "formik";
+import { Formik } from "formik";
+import {Button } from '@material-ui/core';
 //import { ErrorMessage } from '@hookform/error-message';
 
-const DataPersonal = formikProps=> {
+const DataPersonal = ({setActiveStep}) => {
 
-
+    const next=()=>{
+        {setActiveStep((activeStep) => activeStep + 1)}
+    }
     const useStyles = makeStyles((theme) => ({
         content: {
             padding: theme.spacing(2),
@@ -87,15 +90,13 @@ const DataPersonal = formikProps=> {
         },
     }));
     const classes = useStyles();
-    const { errors, touched } = formikProps;
+   // const { errors, touched } = formikProps;
 
-    const asd = formikProps.values;
-    console.log(asd)
     return (
         <>
 
             <Typography variant="h6" gutterBottom>
-                Dato
+                Datos
             </Typography>
             <Grid container>
                 <Grid item xs={12}>
@@ -115,14 +116,29 @@ const DataPersonal = formikProps=> {
                         </label>
                     </Paper>
                 </Grid>
-                <Grid container spacing={4} className={ classes.error }>
+        <Formik
+            initialValues={{idcategory:'', bussinesname:'',rfc:'', socialreason:'', email:'', cellphone:'', addres:''
+            , postalcode:'', longitude:'-89.6169600', latitude:'20.9753700', country:''}}
+                onSubmit={(data, { setSubmitting})=>{
+                setSubmitting(true);
+                console.log('enviaste', data)
+                setSubmitting(false);
+                next()
+
+            }}
+            >
+            {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
+           <form onSubmit={handleSubmit}>
+               <Grid container spacing={4} className={ classes.error }>
                     <Grid item xs={12} sm={6} >
-                        <Field
-                             as={TextField}                         
+                        <TextField                     
                             name="bussinesname"
                             label="Nombre del negocio"
-                            error={touched.bussinesname && errors.bussinesname}
-                            helperText={touched.bussinesname && errors.bussinesname}
+                            value={values.bussinesname}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
+                            // error={touched.bussinesname && errors.bussinesname}
+                            // helperText={touched.bussinesname && errors.bussinesname}
                             // helperText={<ErrorMessage errors={ errors } name="resourcedatas.firstname" /> }
                             fullWidth
                             autoComplete="given-name"
@@ -130,11 +146,14 @@ const DataPersonal = formikProps=> {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField                          
-                            name="RFC"
+                            name="rfc"
                             label="RFC"
+                            value={values.rfc}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             // helperText={ <ErrorMessage errors={ errors } name="resourcedatas.lastname" /> }
                             fullWidth
-                            onChange={(e)=>updateRegister(e.target.value)}
+                           // onChange={(e)=>updateRegister(e.target.value)}
                             autoComplete="family-name"
                         />
                     </Grid>
@@ -142,6 +161,9 @@ const DataPersonal = formikProps=> {
                         <TextField
                             name="socialreason"
                             label="Razon social"
+                            value={values.socialreason}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             fullWidth
                             autoComplete="shipping address-line1"
                         />
@@ -149,6 +171,9 @@ const DataPersonal = formikProps=> {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             label="Email"
                             fullWidth
                             autoComplete="given-name"
@@ -157,6 +182,9 @@ const DataPersonal = formikProps=> {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             name="cellphone"
+                            value={values.cellphone}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             label="Celular"
                             fullWidth
                             autoComplete="family-name"
@@ -166,6 +194,9 @@ const DataPersonal = formikProps=> {
                         <TextField
                             name="addres"
                             label="Direccion"
+                            value={values.addres}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             fullWidth
                             autoComplete="family-name"
                         />
@@ -173,6 +204,9 @@ const DataPersonal = formikProps=> {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             id="country"
+                            value={values.country}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             label="Ciudad"
                             fullWidth
                             autoComplete="shipping address-level2"
@@ -185,6 +219,9 @@ const DataPersonal = formikProps=> {
                         <TextField
                             name="postalcode"
                             label="Zip / Postal code"
+                            value={values.postalcode}
+                            onChange={handleChange}
+                            onBlur={handleBlur}     
                             fullWidth
                             autoComplete="shipping postal-code"
                         />
@@ -199,6 +236,12 @@ const DataPersonal = formikProps=> {
                         />
                     </Grid>
                 </Grid>
+                <div align="right">
+                 <Button disabled={isSubmitting}  type="submit" className="btn" color="primary">Siguiente</Button>
+            </div>
+            </form>
+            )}
+            </Formik>
             </Grid>
         </>
 

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Card, CardContent } from '@material-ui/core';
+import { Button, Card, CardContent } from '@material-ui/core';
 import { red, pink } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import Add from '@material-ui/icons/Add';
@@ -42,11 +42,13 @@ const MapRegister = () => {
           <div >
             <GoogleMap/>
           </div>
+          <div>
+            <Button align="right">
+              Finalizar
+            </Button>
+          </div>
         </Grid>
       </Grid>
-      <form className={classes.layout} >
-        <GoogleMap />
-      </form>
     </React.Fragment>
   );
 }

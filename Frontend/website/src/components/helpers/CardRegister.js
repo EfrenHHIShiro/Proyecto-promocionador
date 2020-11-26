@@ -9,7 +9,7 @@ import {
   Typography,
   makeStyles 
 } from '@material-ui/core/';
-import { Field } from "formik";
+//import { Field } from "formik";
 
 import BussinesRegister from './BussinesRegister';
 import MapRegister from './RegisterMAP';
@@ -20,7 +20,7 @@ import { useForm } from 'react-hook-form';
 // import * as yup from 'yup';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { FormChange } from '../../actions/persistenceActions';
-import {Formik, Form} from "formik";
+//import {Formik, Form} from "formik";
 
 
 
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Datos','Ubicación', 'Documentos'];
+const steps = ['Datos','Ubicación'];
 
 const Checkout =()=> {
   const classes = useStyles();
@@ -96,31 +96,19 @@ const Checkout =()=> {
     formData
   });
 
-  const renderStep = (activeStep,values, errors, touched, setForm) => {
+  const renderStep = (activeStep) => {
     switch (activeStep) {
       case 0:
-        return <BussinesRegister touched={touched} errors={errors}  />;
+        return <BussinesRegister setActiveStep={setActiveStep} activeStep={activeStep} />;
       case 1:
-        return <MapRegister touched={touched} errors={errors} setForm={setForm} />;
-      case 2:
-        return <Documents values={values}  />;
+        return <MapRegister setActiveStep={setActiveStep} />;
+      // case 2:
+      //   return <Documents values={values}  />;
       default:
         throw new Error('Unknown step');
     }
   }
 
-  const validate = values => {
-    const errors = {};
-    if (!values.bussinesname) {
-      errors.bussinesname = "Required";
-    }
-
-    if (!values.middleName) {
-      errors.middleName = "Required";
-    }
-
-    return errors;
-  };
 
   return (
     <>
@@ -148,22 +136,22 @@ const Checkout =()=> {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <Formik
+                {/* <Formik
                   enableReinitialize
                   initialValues={{ ...formData }}
                   onSubmit={handleSubmit}
                   validate={validate}
                 >
                 {({values, errors, touched, setForm}) => (
-                <Form className={classes.layout} onSubmit={handleSubmit(onSubmit)}   >
-                {renderStep(activeStep, values,errors, touched, setForm)}
-                <div align="right">
-                <StepButton activeStep={activeStep} />
+                <Form className={classes.layout} onSubmit={handleSubmit(onSubmit)}   > */}
+                {renderStep(activeStep)} 
+                {/* <div align="right">
+                <StepButton values={values} touched={touched} setForm={setForm} activeStep={activeStep} />
                 </div>
 
-                </Form>   
-                        )}   
-                </Formik>   
+                </Form>    */}
+                        {/* )}    */}
+                {/* </Formik>    */}
               </React.Fragment>
             )}
           </React.Fragment>
