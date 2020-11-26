@@ -10,7 +10,6 @@ import 'package:appmobile/src/Widgets/TextFieldPasswordContiner.dart';
 import '../../constants.dart';
 
 class LoginPage extends StatelessWidget {
-  
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
@@ -41,19 +40,53 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 //Email
-                TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.email), hintText: "Email"),
-                  onChanged: (value) {},
-                ),
+                Container(
+                    margin: EdgeInsets.all(35),
+                    decoration: BoxDecoration(
+                      color: kTextWhiteColor,
+                      borderRadius: BorderRadius.circular(90),
+                    ),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      
+                      controller: emailController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            // width: 0.0 produces a thin "hairline" border
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            //borderSide: BorderSide(color: Colors.white24)
+                            borderSide: const BorderSide(),
+                          ),
+                          suffixIcon: Icon(Icons.email),
+                          hintText: "Email"),
+                      onChanged: (value) {},
+                    )),
+
                 //Password
-                TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.vpn_key),
-                    hintText: "Contraseña",
-                    suffixIcon: Icon(Icons.remove_red_eye),
+                Container(
+                   margin: EdgeInsets.all(35),
+                   
+                    decoration: BoxDecoration(
+                      color: kTextWhiteColor,
+                      borderRadius: BorderRadius.circular(90),
+                    ),
+                  child: TextFormField(
+                    
+                    obscureText: true,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                            // width: 0.0 produces a thin "hairline" border
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            //borderSide: BorderSide(color: Colors.white24)
+                            borderSide: const BorderSide(),
+                          ),
+                      prefixIcon: Icon(Icons.vpn_key),
+                      hintText: "Contraseña",
+                      suffixIcon: Icon(Icons.remove_red_eye),
+                    ),
                   ),
                 ),
                 //Recuperar contraseña
