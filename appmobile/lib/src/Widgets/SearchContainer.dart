@@ -9,20 +9,23 @@ class SearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(
-        Icons.search,
-        color: kPrimaryColor,
+    return Container(
+      decoration: BoxDecoration(
+        color: kTextWhiteColor,
+        borderRadius: BorderRadius.circular(50),
       ),
-      title: TextField(
+      child: TextField(
+        onChanged: (val) {},
         decoration: InputDecoration(
-          hintText: "Encontrar Bares",
-          border: InputBorder.none,
+          border: OutlineInputBorder(
+              // width: 0.0 produces a thin "hairline" border
+              borderRadius: BorderRadius.all(Radius.circular(90.0)),
+              //borderSide: BorderSide(color: Colors.white24)
+              borderSide: const BorderSide(),
+              ),
+          suffixIcon: Icon(Icons.search),
+          labelText: "Búscaqueda...",
         ),
-      ),
-      trailing: Icon(
-        Icons.filter_list,
-        color: kPrimaryColor,
       ),
     );
   }
