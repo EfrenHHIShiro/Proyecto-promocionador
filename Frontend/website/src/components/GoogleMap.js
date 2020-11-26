@@ -18,8 +18,7 @@ const containerStyle = {
 
         showingInfoWindow: false,
         activeMarker: {},
-        selectedPlace: {},
-  
+        selectedPlace: {},  
         mapCenter: {
             lat: 20.9753700,
             lng:  -89.6169600,

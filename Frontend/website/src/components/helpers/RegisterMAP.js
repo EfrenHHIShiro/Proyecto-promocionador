@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const MapRegister = () => {
+
   const classes = useStyles();
   return (
     <React.Fragment>

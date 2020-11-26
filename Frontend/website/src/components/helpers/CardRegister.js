@@ -14,7 +14,7 @@ import { Field } from "formik";
 import BussinesRegister from './BussinesRegister';
 import MapRegister from './RegisterMAP';
 import Documents from './Documents';
-
+import { StepButton } from "./ButtonStteper";
 import { useForm } from 'react-hook-form';
 //  //import { yupResolver } from '@hookform/resolvers';
 // import * as yup from 'yup';
@@ -67,14 +67,13 @@ const Checkout =()=> {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    console.log(formData, 'Tiene')
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
-  const formData = {
+  const [form, setForm]=React.useState([])
+  const formData= {
     bussinesname: "",
     rfc: "",
     socialreason: "",
@@ -97,18 +96,19 @@ const Checkout =()=> {
     formData
   });
 
-  const renderStep = (activeStep,values, errors, touched) => {
+  const renderStep = (activeStep,values, errors, touched, setForm) => {
     switch (activeStep) {
       case 0:
-        return <BussinesRegister touched={touched} errors={errors}   />;
+        return <BussinesRegister touched={touched} errors={errors}  />;
       case 1:
-        return <MapRegister touched={touched} errors={errors}   className="layout2"/>;
+        return <MapRegister touched={touched} errors={errors} setForm={setForm} />;
       case 2:
-        return <Documents values={values} />;
+        return <Documents values={values}  />;
       default:
         throw new Error('Unknown step');
     }
   }
+
   const validate = values => {
     const errors = {};
     if (!values.bussinesname) {
@@ -137,6 +137,7 @@ const Checkout =()=> {
           </Stepper>
           <React.Fragment >
             {activeStep === steps.length ? (
+
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
                   Registro completo.
@@ -153,24 +154,13 @@ const Checkout =()=> {
                   onSubmit={handleSubmit}
                   validate={validate}
                 >
-                {({values, errors, touched}) => (
+                {({values, errors, touched, setForm}) => (
                 <Form className={classes.layout} onSubmit={handleSubmit(onSubmit)}   >
-                {renderStep(activeStep, values,errors, touched)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Volver
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
-                  </Button>
+                {renderStep(activeStep, values,errors, touched, setForm)}
+                <div align="right">
+                <StepButton activeStep={activeStep} />
                 </div>
+
                 </Form>   
                         )}   
                 </Formik>   
