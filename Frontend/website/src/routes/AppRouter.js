@@ -19,7 +19,7 @@ const AppRouter = () => {
     useEffect(() => {
         if( sd === 6 ) {
             //dispatch( login( 1,'sd' ) );
-            setIsLoggedIn( false );
+            setIsLoggedIn( true );
         } else {
             setIsLoggedIn( false );
         }

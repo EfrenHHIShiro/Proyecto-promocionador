@@ -123,7 +123,7 @@ export default function SignInSide() {
             </Button>
           <Grid container justify="center" className={classes.text}>
             Sí eres nuevo usuario.
-            <Link >
+            <Link href="/auth/verify+account/:userId">
               Registrarse aquí
             </Link>
           </Grid>

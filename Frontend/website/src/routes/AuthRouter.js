@@ -5,10 +5,15 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import LoginScreen from '../components/auth/LoginScreen';
 import Fondo from '../assets/images/hero.jpg'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import ForgottenPasword from '../components/auth/ForgottenPasword';
+import VerifyAccount from '../components/auth/VerifyAccount';
 
 
 const useStyles = makeStyles((theme) => ({
+   
     containerbackground: {
+        margin: '-8px',
+        padding: '0',
         maxWidth: '100vw',
         height: '100vh',
         display: 'flex',
@@ -41,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     contentcomponentslogin:{
         backgroundColor: ' #858585',
         width: '100%',
-        
         justifyContent: 'center',
         borderRadius: '0 2% 2% 0',
         boxShadow: '0 0 3px 0 rgba(0, 0, 0, .2)',
@@ -61,15 +65,15 @@ const AuthRouter = () => {
                         <Route 
                             exact path="/auth/login"
                             component={ LoginScreen }/>
-                        {/* <Route 
+                        <Route 
                             path="/auth/recovery+password"
                             component={ ForgottenPasword }/>
-                        <Route
+                        {/* <Route
                             path="/auth/change+password/:userId"
-                            component={ ChangePassword } />
+                            component={ ChangePassword } /> */}
                         <Route
                             path="/auth/verify+account/:userId"
-                            component={ VerifyAccount } /> */}
+                            component={ VerifyAccount } />
                             
                         <Redirect to="/auth/login" />
                     </Switch>
