@@ -70,9 +70,8 @@ class Categories extends StatelessWidget {
               height: 5,
             ),
             Options(),
-            Stack(
+            ListView(
               children: <Widget>[
-                
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Container(
@@ -83,11 +82,20 @@ class Categories extends StatelessWidget {
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  
                 ),
-                
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    height: 83,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                ),
               ],
-            ),
+            )
           ],
         ),
       ),

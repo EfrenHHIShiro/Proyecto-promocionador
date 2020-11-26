@@ -15,6 +15,7 @@ class SearchContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
       ),
       child: TextField(
+        maxLength: 30,
         onChanged: (val) {},
         decoration: InputDecoration(
           border: OutlineInputBorder(
@@ -24,7 +25,7 @@ class SearchContainer extends StatelessWidget {
               borderSide: const BorderSide(),
               ),
           suffixIcon: Icon(Icons.search),
-          labelText: "Búscaqueda...",
+          labelText: "Búsqueda...",
         ),
       ),
     );
