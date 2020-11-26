@@ -36,7 +36,7 @@ export const SidebarListIcons = ({useStyles}) => {
                         <PersonIcon style={ {color: 'white'} } />
                     </ListItemIcon>
                     
-                    <ListItemText primary="Developers" />
+                    <ListItemText primary="Negocios" />
                 </ListItem>
             </Link>
             
@@ -45,7 +45,7 @@ export const SidebarListIcons = ({useStyles}) => {
                     <ListItemIcon>
                         <GroupWorkIcon style={ {color: 'white'} } />
                     </ListItemIcon>
-                    <ListItemText primary="Teams" />
+                    <ListItemText primary="Usuarios" />
                 </ListItem>
             </Link>
 
@@ -54,7 +54,7 @@ export const SidebarListIcons = ({useStyles}) => {
                     <ListItemIcon>
                         <GroupIcon style={ {color: 'white'} } />
                     </ListItemIcon>
-                    <ListItemText primary="Clients" />
+                    <ListItemText primary="Empleados" />
                 </ListItem>
             </Link>
 

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(60),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 800,
       marginLeft: 'auto',
@@ -37,18 +37,14 @@ const MapRegister = () => {
       <Typography variant="h6" gutterBottom>
         Selecciona la ubicación
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <div >
-            <GoogleMap/>
-          </div>
-          <div>
-            <Button align="right">
-              Finalizar
+      <div className={classes.layout}>
+        <GoogleMap />
+      </div>
+      <div>
+        <Button align="right">
+          Finalizar
             </Button>
-          </div>
-        </Grid>
-      </Grid>
+      </div>
     </React.Fragment>
   );
 }
