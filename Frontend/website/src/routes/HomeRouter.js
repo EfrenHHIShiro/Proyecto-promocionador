@@ -15,9 +15,10 @@ import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { SidebarListIcons } from '../components/helpers/SidebarListIcons';
 import { List, useFormControl } from '@material-ui/core';
 
-import logo from '../assets/images/ic_git_logo_icon.svg';
+import logo from '../assets/images/barman.svg';
 import HomeScreen from '../components/HomeScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import { Reset } from '../actions/persistenceActions';
@@ -189,7 +190,7 @@ const HomeRouter = () => {
                         onClick={ handleDrawerOpen }
                         className={ clsx(classes.menuButton, open && classes.menuButtonHidden) }
                     >
-                        {/* <img className={classes.logo} alt="Portal Logo" src={logo} align="center" /> */}
+                        <img className={classes.logo} alt="Portal Logo" src={logo} align="center" />
                         {/* <MenuIcon /> */}
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={ classes.title }>
@@ -231,7 +232,7 @@ const HomeRouter = () => {
                 </div>
                 <Divider />
                 <List  >
-                    {/* <SidebarListIcons useStyles={useStyles} /> */}
+                    <SidebarListIcons useStyles={useStyles} />
                 </List>
                 </div>
             </Drawer>
@@ -244,7 +245,6 @@ const HomeRouter = () => {
                             component={ HomeScreen } />
 
                         {/* Details */}
-                       
                         <Redirect to="/" />
                     </Switch>
                 </div>

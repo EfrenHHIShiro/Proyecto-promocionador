@@ -34,84 +34,55 @@ const CssTextField = withStyles(theme => ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '70vh',
-    width: '70vh',
+    height: '69.9vh',
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
-    borderRadius: 10,
-    backgroundColor: '#FFFFFE',
+    backgroundColor: '#858585',
     color: '#ffffff',
   },
   paper: {
-    margin: theme.spacing(1, 6),
+
+    margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
   },
-  logo: {
-    width: 35,
+  
+  logop: {
+    width: 15,
   },
   lg: {
-    marginLeft: 35,
-  },
-  buttonlogoGoogle: {
-    backgroundColor: '#EEEEEE',
-    color: 'black',
-    height: 50,
-    width: 200,
-  },
-  buttonlogoFacebook: {
-    backgroundColor: '#1977F3',
-    color: 'white',
-    height: 50,
-    width: 200,
+    marginTop: 20,
+    marginLeft: 140,
   },
   form: {
-    width: '100%',
+    width: '100%', // Fix IE 11 issue.
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#0367A6',
-  },
+        margin: theme.spacing(3, 0, 2),
+        backgroundColor: '#0367A6',
+      },
   links: {
     color: '#ffffff',
     marginLeft: '28%',
   },
   text:
   {
-    color: '#586A98',
+    color: '#ffffff',
   },
 }));
+
+
 
 export default function SignInSide() {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.root}>
-        <Grid container  xs={12} sm={12} >
-          <h1 className={classes.lg}>Inicio de sesión</h1>
-          <Grid container justify="space-around" direction="row">
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<img className={classes.logo} alt="Portal Logo" src={FacebookIcon} align="center" />}
-            className={classes.buttonlogoFacebook}
-          >
-            Continuar con Facebook
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<img className={classes.logo} alt="log" src={GoogleIcon} align="center" />}
-            className={classes.buttonlogoGoogle}
-          >
-            Continuar con Google
-          </Button>
-         </Grid>
+      <Grid container spacing={3}>
+        <h1 className={classes.lg}>Inicio de sesión</h1>
       </Grid>
       <div className={classes.paper}>
-      <Grid container justify="center">
-        <h2>O</h2>
-      </Grid>
         <form className={classes.form} noValidate>
           <CssTextField
             variant="outlined"
@@ -137,7 +108,7 @@ export default function SignInSide() {
             inputProps={{ style: { color: 'white' } }}
           />
           <Grid container justify="flex-end">
-            <Link href="/auth/recovery+password" className={classes.text&classes.links}>
+            <Link href="/auth/recovery+password" className={classes.text & classes.links}>
               ¿Se te olvidó tu contraseña?
             </Link>
           </Grid>
@@ -150,9 +121,9 @@ export default function SignInSide() {
           >
             Iniciar sesion
             </Button>
-            <Grid container justify="center" className={classes.text}>
+          <Grid container justify="center" className={classes.text}>
             Sí eres nuevo usuario.
-            <Link href="/auth/recovery+password">
+            <Link >
               Registrarse aquí
             </Link>
           </Grid>
