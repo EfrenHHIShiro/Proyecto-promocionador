@@ -118,7 +118,8 @@ const DataPersonal = ({setActiveStep}) => {
                 </Grid>
         <Formik
             initialValues={{idcategory:'', bussinesname:'',rfc:'', socialreason:'', email:'', cellphone:'', addres:''
-            , postalcode:'', longitude:'-89.6169600', latitude:'20.9753700', country:''}}
+            , postalcode:'', longitude:'-89.6169600', latitude:'20.9753700', 
+            country:{idcountry:'12hbocsa3iua',countryname:'Mérida',idstate:'31',statename:'Yucatan'}}}
                 onSubmit={(data, { setSubmitting})=>{
                 setSubmitting(true);
                 console.log('enviaste', data)
@@ -204,7 +205,7 @@ const DataPersonal = ({setActiveStep}) => {
                     <Grid item xs={12} sm={6}>
                         <TextField
                             id="country"
-                            value={values.country}
+                            value={values.country.countryname}
                             onChange={handleChange}
                             onBlur={handleBlur}     
                             label="Ciudad"

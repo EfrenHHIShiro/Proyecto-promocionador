@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FacebookIcon from '../../assets/icons/facebook.svg';
 import GoogleIcon from '../../assets/icons/google.svg';
-
+import {Formik} from 'formik'
 
 const CssTextField = withStyles(theme => ({
   root: {
@@ -83,7 +83,18 @@ export default function SignInSide() {
         <h1 className={classes.lg}>Inicio de sesión</h1>
       </Grid>
       <div className={classes.paper}>
-        <form className={classes.form} noValidate>
+      <Formik
+            initialValues={{email:'', password:''}}
+                onSubmit={(data, { setSubmitting})=>{
+                setSubmitting(true);
+                console.log('enviaste', data)
+                setSubmitting(false);
+               // next()
+
+            }}
+            >
+            {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <CssTextField
             variant="outlined"
             margin="normal"
@@ -95,6 +106,9 @@ export default function SignInSide() {
             autoComplete="email"
             autoFocus
             inputProps={{ style: { color: 'white' } }}
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}  
           />
           <CssTextField
             variant="outlined"
@@ -106,6 +120,9 @@ export default function SignInSide() {
             id="password"
             autoComplete="current-password"
             inputProps={{ style: { color: 'white' } }}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}  
           />
           <Grid container justify="flex-end">
             <Link href="/auth/recovery+password" className={classes.text & classes.links}>
@@ -117,6 +134,7 @@ export default function SignInSide() {
             fullWidth
             variant="contained"
             color="primary"
+            disabled={isSubmitting}
             className={classes.submit}
           >
             Iniciar sesion
@@ -128,6 +146,8 @@ export default function SignInSide() {
             </Link>
           </Grid>
         </form>
+            )}
+        </Formik>
       </div>
     </Grid>
   );

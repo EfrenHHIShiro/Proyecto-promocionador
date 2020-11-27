@@ -42,8 +42,8 @@ const MapRegister = () => {
       </div>
       <div>
         <Button align="right">
-          Finalizar
-            </Button>
+          Enviar
+        </Button>
       </div>
     </React.Fragment>
   );
