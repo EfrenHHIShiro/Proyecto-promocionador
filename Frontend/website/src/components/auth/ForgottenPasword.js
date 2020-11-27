@@ -72,6 +72,9 @@ export default function SignInSide() {
         e.preventDefault();
         history.push(`/auth/login`)
     }
+     const login =()=>{
+         
+     }
     
     return (
         <Grid container component="main" className={classes.root}>

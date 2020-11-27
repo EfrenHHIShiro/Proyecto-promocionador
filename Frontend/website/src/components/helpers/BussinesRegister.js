@@ -15,6 +15,8 @@ import { Formik } from "formik";
 import {Button } from '@material-ui/core';
 //import { ErrorMessage } from '@hookform/error-message';
 
+
+
 const DataPersonal = ({setActiveStep}) => {
 
     const next=()=>{
@@ -91,7 +93,11 @@ const DataPersonal = ({setActiveStep}) => {
     }));
     const classes = useStyles();
    // const { errors, touched } = formikProps;
-
+    const RegisterNewUser = async (data)=>{
+        const response = await Api.post('auth/LoginUser', data)
+        console.log(response, 'La respuesta fue de')
+        history.replace('/Home')
+    }
     return (
         <>
 

@@ -9,6 +9,8 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FacebookIcon from '../../assets/icons/facebook.svg';
 import GoogleIcon from '../../assets/icons/google.svg';
 import {Formik} from 'formik'
+import Api from '../Api'
+import { useHistory } from 'react-router';
 
 const CssTextField = withStyles(theme => ({
   root: {
@@ -76,6 +78,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const history = useHistory();
+
+  const loginApi = async (data)=>{
+    const response = await Api.post('auth/LoginUser', data)
+    console.log(response, 'La respuesta fue de')
+    history.replace('/Home')
+  }
 
   return (
     <Grid container className={classes.root}>
@@ -88,6 +97,7 @@ export default function SignInSide() {
                 onSubmit={(data, { setSubmitting})=>{
                 setSubmitting(true);
                 console.log('enviaste', data)
+                loginApi(data)
                 setSubmitting(false);
                // next()
 
