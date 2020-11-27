@@ -20,6 +20,9 @@ import { List, useFormControl } from '@material-ui/core';
 
 import logo from '../assets/images/barman.svg';
 import HomeScreen from '../components/HomeScreen';
+import CardClient from '../components/helpers/CardClient';
+import CardRegister from '../components/helpers/CardRegister';
+import CardEmployee from '../components/helpers/CardEmployee';
 import { useDispatch, useSelector } from 'react-redux';
 import { Reset } from '../actions/persistenceActions';
 import { ChangeStatus } from '../actions/meunuActions';
@@ -65,11 +68,11 @@ const HomeRouter = () => {
         },
         title: {
             flexGrow: 1,
-            fontSize:28,
+            fontSize: 28,
         },
         drawerPaper: {
             position: 'relative',
-            color:'white',
+            color: 'white',
             whiteSpace: 'nowrap',
             flexDirection: 'column',
             overflowX: 'hidden',
@@ -87,7 +90,7 @@ const HomeRouter = () => {
             [theme.breakpoints.up('sm')]: {
                 width: theme.spacing(9),
             },
-            [theme.breakpoints.down('sm')]:{
+            [theme.breakpoints.down('sm')]: {
                 display: 'none',
             },
             transition: theme.transitions.create('width', {
@@ -109,7 +112,7 @@ const HomeRouter = () => {
             paddingTop: theme.spacing(4),
             marginBottom: theme.spacing(4),
             paddingLeft: theme.spacing(4),
-            paddingRight:theme.spacing(4),
+            paddingRight: theme.spacing(4),
         },
         '@global': {
             '*::-webkit-scrollbar': {
@@ -117,19 +120,19 @@ const HomeRouter = () => {
             },
             '*::-webkit-scrollbar-track': {
                 '-webkit-box-shadow': 'inset 0 0 6px rgb(5,151,242)',
-                borderRadius:'5em',
+                borderRadius: '5em',
             },
             '*::-webkit-scrollbar-thumb': {
                 backgroundColor: 'rgb(255,255,255)',
                 // outline: '1px solid slategrey',
-                borderRadius:'5em',
+                borderRadius: '5em',
             }
         },
         contentNested: {
             flex: '1 1 auto',
-            maxHeight:'400px',
+            maxHeight: '400px',
             overflowY: 'scroll',
-            overflowX:'hidden',
+            overflowX: 'hidden',
         },
         nested: {
             paddingLeft: theme.spacing(4),
@@ -138,7 +141,7 @@ const HomeRouter = () => {
         textLinks: {
             textDecoration: 'none',
             color: 'white',
-        },  
+        },
         logo: {
             width: theme.spacing(4),
             maxWidth: theme.spacing(4),
@@ -147,17 +150,17 @@ const HomeRouter = () => {
     }));
 
     const dispatch = useDispatch();
-    const open = useSelector( state => state.menu.open )
+    const open = useSelector(state => state.menu.open)
 
     const location = useLocation();
 
     useEffect(() => {
-        if(location.pathname !== '/Developer/Detail/7'){
-            dispatch( Reset() );
+        if (location.pathname !== '/Developer/Detail/7') {
+            dispatch(Reset());
         }
         console.log(location.pathname)
-    },[])
-    
+    }, [])
+
     const classes = useStyles();
 
     const [openModal, setOpenModal] = useState(false);
@@ -177,40 +180,40 @@ const HomeRouter = () => {
     const handleModalClose = () => {
         setOpenModal(false);
     };
-    
+
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={ clsx(classes.appBar, open && classes.appBarShift) }>
-                <Toolbar className={ classes.toolbar }>
+            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+                <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={ handleDrawerOpen }
-                        className={ clsx(classes.menuButton, open && classes.menuButtonHidden) }
+                        onClick={handleDrawerOpen}
+                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
                         <img className={classes.logo} alt="Portal Logo" src={logo} align="center" />
                         {/* <MenuIcon /> */}
                     </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={ classes.title }>
+                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         BarAdmin
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={ 4 } color="secondary">
+                        <Badge badgeContent={4} color="secondary">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
                     <IconButton color="inherit">
                         <Badge>
-                            <AccountCircleIcon/>
+                            <AccountCircleIcon />
                         </Badge>
                     </IconButton>
-                    <IconButton color="inherit" onClick={ handleModalOpen }>
+                    <IconButton color="inherit" onClick={handleModalOpen}>
                         <Badge>
-                            <ExitToAppTwoToneIcon/>
+                            <ExitToAppTwoToneIcon />
                         </Badge>
-                        
+
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -221,35 +224,47 @@ const HomeRouter = () => {
             <Drawer
                 variant="permanent"
                 classes={{
-                paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
                 open={open} >
                 <div className={classes.justifystart}>
-                <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List  >
-                    <SidebarListIcons useStyles={useStyles} />
-                </List>
+                    <div className={classes.toolbarIcon}>
+                        <IconButton onClick={handleDrawerClose}>
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List  >
+                        <SidebarListIcons useStyles={useStyles} />
+                    </List>
                 </div>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <div className={classes.container} >
                     <Switch>
-                        <Route 
+                        <Route
                             exact path="/"
-                            component={ HomeScreen } />
+                            component={HomeScreen} />
+                        <Route
+                            path="/Negocios"
+                            component={CardClient} />
+                        <Route
+                            path="/Empleados"
+                            component={CardEmployee} />
 
                         {/* Details */}
+
+                        {/* Catalogos */}
+                        <Route
+                            path="/helpers/CardRegister"
+                            component={CardRegister} />
+
                         <Redirect to="/" />
                     </Switch>
                 </div>
             </main>
-    </div>
+        </div>
     )
 }
 

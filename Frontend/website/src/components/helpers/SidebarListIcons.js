@@ -30,7 +30,7 @@ export const SidebarListIcons = ({useStyles}) => {
 
     return (
         <div>
-            <Link to="/Developers" className={classes.textLinks} >
+            <Link to="/Negocios" className={classes.textLinks} >
                 <ListItem button selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)} >
                     <ListItemIcon>
                         <PersonIcon style={ {color: 'white'} } />
@@ -49,7 +49,7 @@ export const SidebarListIcons = ({useStyles}) => {
                 </ListItem>
             </Link>
 
-            <Link to="/Clients" className={classes.textLinks} >
+            <Link to="/Empleados" className={classes.textLinks} >
                 <ListItem button  selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)} >
                     <ListItemIcon>
                         <GroupIcon style={ {color: 'white'} } />
@@ -75,7 +75,7 @@ export const SidebarListIcons = ({useStyles}) => {
             </ListItem>
             <Collapse className={classes.contentNested} in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                    <Link to="/Catalog/Softskill" className={classes.textLinks}>
+                    <Link to="/helpers/CardRegister" className={classes.textLinks}>
                         <ListItem button selected={selectedIndex === 5} onClick={(event) => handleListItemClick(event, 5)} className={classes.nested}>
                             <ListItemIcon>
                                 <LibraryBooksIcon style={ {color: 'white'} } />
