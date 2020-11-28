@@ -11,25 +11,29 @@ class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 80,
+        height: 54,
         child: Row(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: kTextWhiteColor,
-                      
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Image.asset(
-                        'assets/images/niveles.png',
-                        width: 25,
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kTextWhiteColor,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: Image.asset(
+                          'assets/images/niveles.png',
+                          width: 25,
+                        ),
                       ),
                     ),
+                    onTap: () {
+                      print("Me Tocas");
+                    },
                   ),
                   SizedBox(
                     height: 5,
@@ -41,28 +45,23 @@ class Options extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: kTextWhiteColor,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey[300],
-                          offset: Offset(4, 6),
-                          blurRadius: 20,
-                        )
-                      ],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: SvgPicture.asset(
-                        'assets/images/distancia.svg',
-                        height: 20,
-                        width: 20,
-                        semanticsLabel: 'Menor Distancia'
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kTextWhiteColor,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: SvgPicture.asset('assets/images/distancia.svg',
+                            height: 20,
+                            width: 20,
+                            semanticsLabel: 'Menor Distancia'),
                       ),
                     ),
+                    onTap: () {
+                      print("Tocame Mas");
+                    },
                   ),
-                  
                   SizedBox(
                     height: 5,
                   ),
@@ -73,28 +72,23 @@ class Options extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: kTextWhiteColor,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey[300],
-                          offset: Offset(4, 6),
-                          blurRadius: 20,
-                        )
-                      ],
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: SvgPicture.asset(
-                        'assets/images/estrella.svg',
-                        height: 20,
-                        width: 20,
-                        semanticsLabel: 'Más de 4.6'
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kTextWhiteColor,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: SvgPicture.asset('assets/images/estrella.svg',
+                            height: 20,
+                            width: 20,
+                            semanticsLabel: 'Más de 4.6'),
                       ),
                     ),
+                    onTap: () {
+                      print("AHHHH");
+                    },
                   ),
-                  
                   SizedBox(
                     height: 5,
                   ),

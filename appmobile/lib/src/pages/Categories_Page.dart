@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:appmobile/src/constants.dart';
 import 'package:appmobile/src/Widgets/Options.dart';
 import 'package:appmobile/src/Widgets/SearchContainer.dart';
+import 'package:appmobile/src/Widgets/EventosYPromociones.dart';
 
 class Categories extends StatelessWidget {
   const Categories({
@@ -47,9 +48,6 @@ class Categories extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -66,11 +64,9 @@ class Categories extends StatelessWidget {
                 child: SearchContainer(),
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
             Options(),
-            ListView(
+            Eventos(),
+            Row(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

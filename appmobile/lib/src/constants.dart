@@ -16,3 +16,6 @@ const kSwitchTrackColorGreen = Color.fromRGBO(131, 207, 148, 1.0);
 
 //Alert
 const kAlertkColor = Color.fromRGBO(255, 0, 0, 1.0);
+
+//Boton Verde
+const kButtonGreen = Color.fromRGBO(24, 214, 68, 100);
