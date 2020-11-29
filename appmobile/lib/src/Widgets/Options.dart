@@ -35,9 +35,7 @@ class Options extends StatelessWidget {
                       print("Me Tocas");
                     },
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  
                 ],
               ),
             ),
@@ -62,9 +60,7 @@ class Options extends StatelessWidget {
                       print("Tocame Mas");
                     },
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  
                 ],
               ),
             ),
@@ -89,9 +85,7 @@ class Options extends StatelessWidget {
                       print("AHHHH");
                     },
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  
                 ],
               ),
             ),

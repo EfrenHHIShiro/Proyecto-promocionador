@@ -54,8 +54,42 @@ class Eventos extends StatelessWidget {
               SizedBox(
                 height: 5,
               ),
-              Row(children:<Widget>[],),
-
+              Container(
+                height: 80,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Container(
+                      width: 130.0,
+                      height: 150.0,
+                      decoration: new BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: new DecorationImage(
+                          image: new AssetImage("assets/images/Tercera.jpeg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Container(
+                      width: 130.0,
+                      height: 150.0,
+                      decoration: new BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: new DecorationImage(
+                          image: new AssetImage("assets/images/WhatsApp Image 2020-10-13 at 8.01.06 PM.jpeg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
             ],
           ),
         ),
