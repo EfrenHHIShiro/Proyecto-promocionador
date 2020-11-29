@@ -21,11 +21,11 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return HomeFragment();
       case 1:
-        return ProfilePage();
+        return _homeWidget();
       case 2:
         return Categories();
       case 3:
-        return _homeWidget();
+        return ProfilePage();
       default:
         return _homeWidget();
     }
@@ -96,7 +96,10 @@ class _HomePageState extends State<HomePage> {
           Icon(Icons.home),
           Icon(Icons.list),
           Icon(Icons.add),
-          Icon(Icons.account_circle),
+          CircleAvatar(
+            radius: 13,
+            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+          )
         ],
         onTap: (index) {
           setStatePage(index);

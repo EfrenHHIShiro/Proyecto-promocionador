@@ -25,16 +25,27 @@ class TextContainer extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 3),
-            child: Text(
-              info,
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-          )
+              margin: EdgeInsets.only(top: 3),
+              child: TextFormField(
+                //enabled: false, 
+                enableInteractiveSelection: false,
+                 focusNode: new AlwaysDisabledFocusNode(),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      // width: 0.0 produces a thin "hairline" border
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      //borderSide: BorderSide(color: Colors.white24)
+                      borderSide: const BorderSide(),
+                    ),
+                    hintText: info),
+                onChanged: (value) {},
+              ))
         ],
       ),
     );
   }
+}
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }

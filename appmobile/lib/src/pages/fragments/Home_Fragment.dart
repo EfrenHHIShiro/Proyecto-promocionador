@@ -1,4 +1,4 @@
-import 'package:appmobile/src/Widgets/CustomText.dart';
+import 'package:appmobile/src/Widgets/EventosYPromociones.dart';
 import 'package:appmobile/src/Widgets/Options.dart';
 import 'package:appmobile/src/Widgets/SearchContainer.dart';
 import 'package:appmobile/src/constants.dart';
@@ -12,7 +12,7 @@ class HomeFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSwitchColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
           children: <Widget>[
@@ -48,36 +48,17 @@ class HomeFragment extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: kTextWhiteColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey[300],
-                      offset: Offset(1, 1),
-                      blurRadius: 4,
-                    ),
-                  ],
-                ),
-                child: SearchContainer(),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Options(),
 
+            SearchContainer(),
+
+            Options(),
+            Eventos(),
             Stack(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Container(
-                    height: 83,
+                    height: 80,
                     width: 400,
                     decoration: BoxDecoration(
                       color: kPrimaryColor,
@@ -91,7 +72,7 @@ class HomeFragment extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 25, vertical: 10),
                       child: Image.asset(
-                        'assets/images/avatar.jpg',
+                        'assets/images/LaNegrita.jpg',
                         height: 64,
                         width: 64,
                       ),

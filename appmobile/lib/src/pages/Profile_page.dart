@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: Colors.white,
       appBar: null,
       body: Center(
         child: Column(
@@ -18,19 +18,19 @@ class ProfilePage extends StatelessWidget {
           children: <Widget>[
             // Imagen Usuario
             Header(
-              username: 'Efren Haazar Herrera Isaac',
               backgroundasset: 'assets/images/the-legend-of-zelda.jpg',
               userasset: 'assets/images/avatar.jpg',
             ),
             // Tabs
             Container(
-              height: size.height - 318,
+              height: size.height - 270,
               child: DefaultTabController(
                 length: 2,
                 child: Column(
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
+                          color: kPrimaryColor,
                           border: Border.all(color: Colors.blueAccent)),
                       child: TabBar(tabs: [
                         Tab(text: "Datos"),
