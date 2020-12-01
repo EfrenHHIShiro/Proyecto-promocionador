@@ -5,11 +5,12 @@ import 'package:appmobile/src/Widgets/SocialIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:appmobile/src/Widgets/ButtonContainer.dart';
-import 'package:appmobile/src/Widgets/TextFieldPasswordContiner.dart';
+import 'package:appmobile/models/loginRequest.dart';
 
 import '../../constants.dart';
 
 class LoginPage extends StatelessWidget {
+  Future<LoginResponse> _futureJwt;
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
@@ -39,16 +40,25 @@ class LoginPage extends StatelessWidget {
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
+
                 //Email
                 Container(
                     margin: EdgeInsets.all(35),
                     decoration: BoxDecoration(
-                      color: kTextWhiteColor,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(90),
                     ),
                     child: TextFormField(
+                      validator: (emailController) {
+                        if (emailController.contains("@")) {
+                          if (emailController.isEmpty) {
+                            return 'Porfavor llena el campo';
+                          }
+                          return null;
+                        } else
+                          return 'Porfavor solo acepta correo falto el @';
+                      },
                       keyboardType: TextInputType.emailAddress,
-                      
                       controller: emailController,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -65,24 +75,27 @@ class LoginPage extends StatelessWidget {
 
                 //Password
                 Container(
-                   margin: EdgeInsets.all(35),
-                   
-                    decoration: BoxDecoration(
-                      color: kTextWhiteColor,
-                      borderRadius: BorderRadius.circular(90),
-                    ),
+                  margin: EdgeInsets.all(35),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(90),
+                  ),
                   child: TextFormField(
-                    
+                    validator: (passwordController) {
+                      if (passwordController.isEmpty) {
+                        return 'Porfavor llena el campo';
+                      }
+                      return null;
+                    },
                     obscureText: true,
                     controller: passwordController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                            // width: 0.0 produces a thin "hairline" border
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(90.0)),
-                            //borderSide: BorderSide(color: Colors.white24)
-                            borderSide: const BorderSide(),
-                          ),
+                        // width: 0.0 produces a thin "hairline" border
+                        borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                        //borderSide: BorderSide(color: Colors.white24)
+                        borderSide: const BorderSide(),
+                      ),
                       prefixIcon: Icon(Icons.vpn_key),
                       hintText: "Contraseña",
                       suffixIcon: Icon(Icons.remove_red_eye),
@@ -108,9 +121,16 @@ class LoginPage extends StatelessWidget {
                 ButtonContainer(
                   text: "Iniciar Sesion",
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'home');
+                    _futureJwt = loginState(
+                        emailController.text, passwordController.text);
+                    _futureJwt.then((LoginResponse login) {
+                      (login.status == true)
+                          ? Navigator.pushReplacementNamed(context, 'home')
+                          : print("todo mal");
+                    });
                   },
                 ),
+
                 // Divisor
                 OrDiviser(),
                 //Login redes
@@ -129,7 +149,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 RegisterAccount(),
               ],
-            ),
+            )
           ],
         ),
       ),
