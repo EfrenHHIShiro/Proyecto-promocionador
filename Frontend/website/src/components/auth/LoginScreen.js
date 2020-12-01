@@ -9,7 +9,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FacebookIcon from '../../assets/icons/facebook.svg';
 import GoogleIcon from '../../assets/icons/google.svg';
 import {Formik} from 'formik'
-import Api from '../Api'
+import Api from '../helpers/Api'
 import { useHistory } from 'react-router';
 
 const CssTextField = withStyles(theme => ({
@@ -83,7 +83,7 @@ export default function SignInSide() {
   const loginApi = async (data)=>{
     const response = await Api.post('auth/LoginUser', data)
     console.log(response, 'La respuesta fue de')
-    history.replace('/Home')
+    history.push('/Home')
   }
 
   return (

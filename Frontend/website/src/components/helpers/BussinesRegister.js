@@ -13,12 +13,14 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import updateRegister from '../redux/actions/actions'
 import { Formik } from "formik";
 import {Button } from '@material-ui/core';
+import Api from '../helpers/Api'
+import { useHistory } from 'react-router';
 //import { ErrorMessage } from '@hookform/error-message';
 
 
 
 const DataPersonal = ({setActiveStep}) => {
-
+    const history = useHistory();
     const next=()=>{
         {setActiveStep((activeStep) => activeStep + 1)}
     }
