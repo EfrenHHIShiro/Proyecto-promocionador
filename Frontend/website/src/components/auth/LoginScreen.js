@@ -15,7 +15,7 @@ import { useHistory } from 'react-router';
 const CssTextField = withStyles(theme => ({
   root: {
     '& label.Mui-focused': {
-      color: 'white',
+      color: '#858585',
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: '#0597F2',
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     height: '69.9vh',
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
-    backgroundColor: '#858585',
-    color: '#ffffff',
+    backgroundColor: '#ffffff',
+    color: '#858585',
   },
   paper: {
 
@@ -65,12 +65,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#0367A6',
       },
   links: {
-    color: '#ffffff',
+    color: '#858585',
     marginLeft: '28%',
   },
   text:
   {
-    color: '#ffffff',
+    color: '#858585',
   },
 }));
 
@@ -81,9 +81,9 @@ export default function SignInSide() {
   const history = useHistory();
 
   const loginApi = async (data)=>{
-    const response = await Api.post('auth/LoginUser', data)
+    const response = await Api.post('auth/LoginUser/', data)
     console.log(response, 'La respuesta fue de')
-    history.push('/Home')
+    // history.push('/Home')
   }
 
   return (
@@ -108,7 +108,7 @@ export default function SignInSide() {
           <CssTextField
             variant="outlined"
             margin="normal"
-            color="#ffffff"
+            // color="#858585"
             fullWidth
             id="email"
             label="Email Address"
@@ -126,10 +126,11 @@ export default function SignInSide() {
             fullWidth
             name="password"
             label="Password"
+            // color="#858585"
             type="password"
             id="password"
             autoComplete="current-password"
-            inputProps={{ style: { color: 'white' } }}
+            // inputProps={{ style: { color: 'white' } }}
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}  

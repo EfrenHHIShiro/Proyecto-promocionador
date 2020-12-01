@@ -52,7 +52,7 @@ const HomeScreen = () => {
     // }
     return (
         // Para pruebas comentar estas lineas
-        <Rg/>
+        <LoginScreen/>
 
     )
 }
